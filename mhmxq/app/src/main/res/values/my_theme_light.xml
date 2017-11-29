@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LightTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="android:textColorHint">@color/textColorTertiary</item>
+
+        <item name="android:windowAnimationStyle">@style/ActivityHorizontalSlideAnimation</item>
+        <item name="android:windowBackground">@android:color/white</item>
+
+    </style>
+
+    <style name="LightTheme.Translucent" parent="LightTheme">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+</resources>

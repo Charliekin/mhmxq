@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="menu_anim_duration">250</integer>
+    <integer name="logo_anim_interval">45</integer>
+    <integer name="loading_anim_interval">20</integer>
+    <integer name="text_show_single_line">1</integer>
+</resources>

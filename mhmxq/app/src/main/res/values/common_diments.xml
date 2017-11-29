@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="common_dialog_content_text_size">15.0dp</dimen>
+    <dimen name="common_dialog_padding">15.0dp</dimen>
+    <dimen name="common_dialog_round_radius">4dp</dimen>
+    <dimen name="common_dialog_min_width">320.0dip</dimen>
+
+    <dimen name="common_padding">13dp</dimen>
+</resources>

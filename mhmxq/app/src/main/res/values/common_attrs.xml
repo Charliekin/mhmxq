@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="HomeTabWidget">
+        <attr name="tabName" format="string"/>
+        <attr name="tabNameSize" format="dimension"/>
+        <attr name="tabNameColor" format="reference|color"/>
+        <attr name="tabIconNameMargin" format="dimension"/>
+        <attr name="tabIcon" format="reference"/>
+        <attr name="tabIconWidth" format="dimension"/>
+        <attr name="tabIconHeight" format="dimension"/>
+        <attr name="unread" format="string"/>
+        <attr name="unreadSize" format="dimension"/>
+        <attr name="unreadBg" format="reference|color"/>
+        <attr name="unreadColor" format="reference|color"/>
+    </declare-styleable>
+
+    <declare-styleable name="CategoryNavigationBar">
+        <attr name="cate_left_text" format="reference|string"/>
+        <attr name="cate_left_text_size" format="reference|dimension"/>
+        <attr name="cate_left_text_color" format="reference|color"/>
+        <attr name="cate_left_icon" format="reference"/>
+        <attr name="cate_left_icon_width" format="reference|dimension"/>
+        <attr name="cate_left_icon_height" format="reference|dimension"/>
+        <attr name="cate_center_padding_left" format="reference|dimension"/>
+        <attr name="cate_center_padding_right" format="reference|dimension"/>
+        <attr name="cate_center_text" format="reference|string"/>
+        <attr name="cate_center_text_size" format="reference|dimension"/>
+        <attr name="cate_center_text_color" format="reference|color"/>
+        <attr name="cate_center_icon" format="reference"/>
+        <attr name="cate_center_icon_width" format="reference|dimension"/>
+        <attr name="cate_center_icon_height" format="reference|dimension"/>
+        <attr name="cate_right_text" format="reference|string"/>
+        <attr name="cate_right_text_size" format="reference|dimension"/>
+        <attr name="cate_right_text_color" format="reference|color"/>
+        <attr name="cate_right_icon" format="reference"/>
+        <attr name="cate_right_icon_width" format="reference|dimension"/>
+        <attr name="cate_right_icon_height" format="reference|dimension"/>
+    </declare-styleable>
+
+</resources>

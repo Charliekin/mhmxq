@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <attr name="left_padding_left" format="dimension"/>
+    <attr name="left_padding_right" format="dimension"/>
+    <attr name="left_icon" format="reference"/>
+    <attr name="left_icon_width" format="dimension"/>
+    <attr name="left_icon_height" format="dimension"/>
+
+    <attr name="left_text" format="string"/>
+    <attr name="left_text_color" format="reference|color"/>
+    <attr name="left_text_size" format="dimension"/>
+    <attr name="left_text_margin_left" format="dimension"/>
+
+    <attr name="show_left_layout" format="boolean"/>
+
+    <attr name="center_title" format="string"/>
+    <attr name="center_subtitle" format="string"/>
+    <attr name="center_title_text_color" format="reference|color"/>
+    <attr name="center_title_text_size" format="dimension"/>
+    <attr name="center_subtitle_text_color" format="reference|color"/>
+    <attr name="center_subtitle_text_size" format="dimension"/>
+    <attr name="center_subtitle_margin_top" format="dimension"/>
+    <attr name="center_max_space" format="boolean"/>
+
+    <attr name="right_padding_left" format="dimension"/>
+    <attr name="right_padding_right" format="dimension"/>
+    <attr name="right_item_margin_left" format="dimension"/>
+    <attr name="right_item_margin_right" format="dimension"/>
+    <attr name="right_text_color" format="reference|color"/>
+    <attr name="right_text_size" format="dimension"/>
+    <attr name="right_text_padding_left" format="dimension"/>
+    <attr name="right_text_padding_right" format="dimension"/>
+    <attr name="right_text_width" format="dimension"/>
+    <attr name="right_icon_width" format="dimension"/>
+    <attr name="right_icon_height" format="dimension"/>
+
+    <declare-styleable name="TitleBar">
+
+        <attr name="left_padding_left"/>
+        <attr name="left_padding_right"/>
+        <attr name="left_icon"/>
+        <attr name="left_icon_width"/>
+        <attr name="left_icon_height"/>
+        <attr name="left_text"/>
+        <attr name="left_text_color"/>
+        <attr name="left_text_size"/>
+        <attr name="left_text_margin_left"/>
+        <attr name="show_left_layout"/>
+        <attr name="center_title"/>
+        <attr name="center_subtitle"/>
+        <attr name="center_title_text_color"/>
+        <attr name="center_title_text_size"/>
+        <attr name="center_subtitle_text_color"/>
+        <attr name="center_subtitle_text_size"/>
+        <attr name="center_subtitle_margin_top"/>
+        <attr name="center_max_space"/>
+        <attr name="right_padding_left"/>
+        <attr name="right_padding_right"/>
+        <attr name="right_item_margin_left"/>
+        <attr name="right_item_margin_right"/>
+        <attr name="right_text_color"/>
+        <attr name="right_text_size"/>
+        <attr name="right_text_padding_left"/>
+        <attr name="right_text_padding_right"/>
+        <attr name="right_text_width"/>
+        <attr name="right_icon_width"/>
+        <attr name="right_icon_height"/>
+
+    </declare-styleable>
+
+</resources>

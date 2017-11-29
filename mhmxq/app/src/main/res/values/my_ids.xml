@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item type="id" name="glide_tag_id"/>
+    <item type="id" name="pullRefreshView"/>
+    <item type="id" name="loadMoreView"/>
+    <item type="id" name="rvView"/>
+    <item type="id" name="loadingLayoutView"/>
+
+</resources>

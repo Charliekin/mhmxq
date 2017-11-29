@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryBg">
+
+
+    <Space
+        android:id="@+id/spacePaL"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/me_cnb_margin_top"
+        app:layout_constraintBottom_toTopOf="@id/llMe"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/llMe"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="@dimen/me_cnb_margin_top"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/common_padding"
+        android:paddingRight="@dimen/common_padding"
+        app:layout_constraintBottom_toTopOf="@id/cnbAttention"
+        app:layout_constraintTop_toBottomOf="@id/spacePaL">
+
+        <ImageView
+            android:id="@+id/ivUserIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/user_icon_default"/>
+
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/me_name_icon_margin"
+            android:layout_marginStart="@dimen/me_name_icon_margin"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="@integer/text_show_single_line"
+            android:text="@string/me_hint_name"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/textSizeSecondary"/>
+
+        <ImageView
+            android:id="@+id/ivQrCode"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+    </LinearLayout>
+
+    <com.mhm.xq.widget.CategoryNavigationBar
+        android:id="@+id/cnbAttention"
+        style="@style/CategoryNavigationBar"
+        android:layout_height="@dimen/title_bar_height"
+        app:cate_left_text="@string/me_attention"
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toTopOf="@id/vDivideAttention"
+        app:layout_constraintTop_toBottomOf="@id/llMe"/>
+
+    <View
+        android:id="@+id/vDivideAttention"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        app:layout_constraintBottom_toTopOf="@id/cnbCollect"
+        app:layout_constraintTop_toBottomOf="@id/cnbAttention"
+        android:background="@drawable/common_margin_divide_line"/>
+
+    <com.mhm.xq.widget.CategoryNavigationBar
+        android:id="@+id/cnbCollect"
+        style="@style/CategoryNavigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        app:cate_left_text="@string/me_collect"
+        app:layout_constraintBottom_toTopOf="@id/vDivideCollect"
+        app:layout_constraintTop_toBottomOf="@id/vDivideAttention"/>
+
+    <View
+        android:id="@+id/vDivideCollect"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        app:layout_constraintBottom_toTopOf="@id/cnbFeedback"
+        app:layout_constraintTop_toBottomOf="@id/cnbCollect"
+        android:background="@drawable/common_margin_divide_line"/>
+
+    <com.mhm.xq.widget.CategoryNavigationBar
+        android:id="@+id/cnbFeedback"
+        android:layout_width="match_parent"
+        style="@style/CategoryNavigationBar"
+        android:layout_height="@dimen/title_bar_height"
+        app:cate_left_text="@string/me_feedback"
+        app:layout_constraintBottom_toTopOf="@id/spaceFbSet"
+        app:layout_constraintTop_toBottomOf="@id/vDivideCollect"/>
+
+    <Space
+        android:id="@+id/spaceFbSet"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/me_cnb_margin_top"
+        app:layout_constraintBottom_toTopOf="@id/cnbSet"
+        app:layout_constraintTop_toBottomOf="@id/cnbFeedback"/>
+
+    <com.mhm.xq.widget.CategoryNavigationBar
+        android:id="@+id/cnbSet"
+        style="@style/CategoryNavigationBar"
+        android:layout_height="@dimen/title_bar_height"
+        android:layout_width="match_parent"
+        app:cate_left_text="@string/me_set"
+        app:layout_constraintTop_toBottomOf="@id/spaceFbSet"/>
+
+</android.support.constraint.ConstraintLayout>

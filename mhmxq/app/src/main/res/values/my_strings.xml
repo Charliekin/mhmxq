@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--common-->
+    <string name="common_fail">请求失败</string>
+    <string name="yesterday">昨天</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="wait">正在加载…</string>
+
+    <!--net error-->
+
+    <string name="have_no_network">网络请求失败，请检查您的网络设置</string>
+    <string name="goods_empty_hint">没有发现相关商品~</string>
+    <string name="not_connected">%s (未连接)</string>
+    <string name="network_error_hint">木有网，伐开心~</string>
+    <string name="network_error_retry">戳我试试</string>
+
+    <!--  editor-fold desc="login"  -->
+
+    <string name="login">登录</string>
+    <string name="registration">注册</string>
+    <string name="mobile_hint">请输入手机号</string>
+    <string name="password_hint">请输入密码</string>
+
+    <!--  editor-fold  -->
+
+    <!--  editor-fold desc="guide"  -->
+
+    <string name="enter_into_main_page">进入主页</string>
+
+    <!--  editor-fold  -->
+
+    <!--  editor-fold desc="guide"  -->
+
+    <string name="home_tab_page">首页</string>
+    <string name="home_tab_disaster">宝贝</string>
+    <string name="home_tab_help">搭手</string>
+    <string name="home_tab_me">我</string>
+
+    <!--  editor-fold  -->
+
+    <!--  editor-fold desc="general"  -->
+
+    <string name="search_title">搜索</string>
+    <!--  editor-fold  -->
+
+    <!--  editor-fold desc="me fragment"  -->
+
+    <string name="me_feedback">用户反馈</string>
+    <string name="me_collect">收藏</string>
+    <string name="me_set">设置</string>
+    <string name="me_attention">关注</string>
+    <string name="me_hint_name">mhm</string>
+    <string name="me_qr_text">我的二维码</string>
+    <string name="scan_qr_code_tip">将二维码放入框内, 可自动扫描</string>
+
+    <!--  editor-fold  -->
+</resources>

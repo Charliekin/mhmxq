@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  editor-fold desc="dimen_dp"  -->
+
+    <dimen name="indicator_margin">12dp</dimen>
+    <dimen name="activity_vertical_margin">15dp</dimen>
+    <dimen name="title_bar_height">44dp</dimen>
+    <dimen name="left_margin">@dimen/indicator_margin</dimen>
+    <dimen name="me_cnb_height">@dimen/title_bar_height</dimen>
+    <dimen name="me_cnb_margin_top">@dimen/activity_vertical_margin</dimen>
+    <dimen name="my_arrow_width">10dp</dimen>
+    <dimen name="my_arrow_height">18dp</dimen>
+    <dimen name="me_name_icon_margin">@dimen/indicator_margin</dimen>
+
+    <!--  editor-fold  -->
+
+    <!--  editor-fold desc="text_sp"  -->
+
+    <dimen name="textSizePrimary">15sp</dimen>
+    <dimen name="textSizeSecondary">14sp</dimen>
+    <dimen name="textSizeTertiary">12sp</dimen>
+    <dimen name="titleCenterTextSize">17sp</dimen>
+    <dimen name="titleRightTextSize">16sp</dimen>
+    <dimen name="tHomeTab">@dimen/textSizeTertiary</dimen>
+
+    <!--  editor-fold  -->
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SimpleIndicatorView">
+        <attr name="indicatorSelected" format="reference"/>
+        <attr name="indicatorNormal" format="reference"/>
+        <attr name="indicatorMargin" format="dimension"/>
+    </declare-styleable>
+</resources>

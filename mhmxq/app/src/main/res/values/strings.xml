@@ -1,0 +1,16 @@
+<resources>
+
+    <string name="scan">扫一扫</string>
+    <string name="scan_fail">扫描错误</string>
+    <string name="msg_error">错误</string>
+    <string name="msg_invalid_value">无效的值</string>
+    <string name="button_ok">确定</string>
+    <string name="contents_email">电子邮件地址</string>
+    <string name="contents_location">地理坐标</string>
+    <string name="contents_phone">电话号码</string>
+    <string name="contents_sms">短信地址</string>
+    <string name="contents_text">纯文本</string>
+    <string name="contents_contact">联系信息</string>
+    <string name="msg_camera_framework_bug_title">开启相机权限</string>
+    <string name="msg_camera_framework_bug">多帮多没有权限使用您的相机，请在设置中开启。</string>
+</resources>

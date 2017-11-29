@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.mhm.xq.view.MyTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        app:left_icon="@mipmap/back"
+        app:center_title_text_color="@color/white"
+        app:center_title_text_size="@dimen/titleCenterTextSize"
+        android:layout_height="@dimen/title_bar_height"/>
+</android.support.constraint.ConstraintLayout>

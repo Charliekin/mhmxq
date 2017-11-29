@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorPrimaryBg</item>
+    </style>
+
+    <style name="TextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColorHint">@color/textColorTertiary</item>
+        <item name="android:textColorHighlight">@android:color/transparent</item>
+        <item name="android:textColorLink">@color/colorPrimary</item>
+    </style>
+
+    <style name="CategoryNavigationBar">
+        <item name="cate_left_text_color">@color/textColorPrimary</item>
+        <item name="cate_left_text_size">@dimen/textSizePrimary</item>
+        <item name="cate_right_icon">@mipmap/my_item_arrow</item>
+        <item name="cate_right_icon_height">@dimen/my_arrow_height</item>
+        <item name="cate_right_icon_width">@dimen/my_arrow_width</item>
+    </style>
+
+</resources>

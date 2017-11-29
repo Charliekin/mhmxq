@@ -1,0 +1,94 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-android'
+
+kapt {
+    generateStubs = true
+}
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.mhm.xq"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    signingConfigs {
+        release {
+            def signingPropFile = new File("${rootProject.projectDir.getAbsolutePath()}/signing.properties")
+            if (signingPropFile.exists()) {
+                def signingProperties = new Properties()
+                signingProperties.load(new FileInputStream(signingPropFile))
+
+                storeFile file("${rootProject.projectDir.getAbsolutePath()}/keystore/xq")
+                storePassword signingProperties["store.pass"]
+                keyAlias signingProperties["key.alias"]
+                keyPassword signingProperties["key.pass"]
+            }
+        }
+        debug {
+            storeFile file("${rootProject.projectDir.getAbsolutePath()}/keystore/xq-debug")
+            storePassword "123456"
+            keyAlias "mhm"
+            keyPassword "123456"
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            applicationIdSuffix
+            signingConfig signingConfigs.release
+            manifestPlaceholders += [APP_NAME: 'xq']
+            buildConfigField("String", "HTTP_HOST", '"http://172.16.20.7:8080"')
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            versionNameSuffix 'dev'
+            applicationIdSuffix ".test"
+            signingConfig signingConfigs.debug
+            manifestPlaceholders += [APP_NAME: 'xqBeta']
+            buildConfigField("String", "HTTP_HOST", '"http://172.16.20.7:8080"')
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.6'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.9.0'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle:2.2.0'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    kapt 'com.jakewharton:butterknife-compiler:8.8.1'
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F0D079</color>
+    <color name="colorPrimaryDark">#F0D096</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="white">@android:color/white</color>
+    <color name="textColorTertiary">#B3BAC7</color>
+
+    <color name="textColorPrimary">#212B3E</color>
+    <color name="textColorSecondary">#656A74</color>
+    <color name="textColorPrice">#FF6600</color>
+
+    <color name="commonTextColor">#808080</color>
+    <color name="colorPrimaryBg">#EBEBEB</color>
+    <color name="divideLineColor">#D9D9D9</color>
+</resources>

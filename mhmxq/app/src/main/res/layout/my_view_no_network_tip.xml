@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/flTipContainer"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:background="#FFE5E4"
+    android:paddingLeft="@dimen/left_margin"
+    android:paddingRight="@dimen/left_margin">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:drawableEnd="@mipmap/setting_arrow"
+        android:drawableLeft="@mipmap/ic_net_error_tip"
+        android:drawablePadding="9dp"
+        android:drawableRight="@mipmap/setting_arrow"
+        android:drawableStart="@mipmap/ic_net_error_tip"
+        android:gravity="center_vertical"
+        android:text="@string/have_no_network"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/textSizeSecondary"
+        />
+
+</FrameLayout>

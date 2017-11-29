@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mhm.xq.ui.base.widget.LoadingLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/loadingLayoutView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:error_view="@layout/my_view_net_error">
+
+    <FrameLayout
+        android:id="@+id/lazyContentView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</com.mhm.xq.ui.base.widget.LoadingLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ActivityHorizontalSlideAnimation">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_slide_out_right</item>
+    </style>
+
+    <style name="LightTheme.MyTitleBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="center_title_text_color">@color/textColorPrimary</item>
+        <item name="center_title_text_size">@dimen/titleCenterTextSize</item>
+        <item name="left_padding_left">0dp</item>
+        <item name="left_padding_right">0dp</item>
+        <item name="left_icon">@mipmap/back</item>
+        <item name="right_icon_width">44dp</item>
+        <item name="right_icon_height">44dp</item>
+        <item name="left_icon_width">44dp</item>
+        <item name="left_icon_height">44dp</item>
+        <item name="right_padding_left">0dp</item>
+        <item name="right_padding_right">0dp</item>
+        <item name="right_item_margin_right">0dp</item>
+        <item name="right_item_margin_left">0dp</item>
+        <item name="right_text_color">@color/title_right_text_color</item>
+        <item name="right_text_size">@dimen/titleRightTextSize</item>
+        <item name="right_text_padding_left">12dp</item>
+        <item name="right_text_padding_right">12dp</item>
+    </style>
+
+</resources>

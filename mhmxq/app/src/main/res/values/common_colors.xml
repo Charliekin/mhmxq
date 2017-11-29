@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--对话框背景色-->
+    <color name="common_dialog_background">#fffbf6f2</color>
+    <!--等待对话框标题颜色-->
+    <color name="common_dialog_progress_title">#ffa19d94</color>
+    <!--提示对话框按钮普通状态背景颜色-->
+    <color name="common_dialog_btn_normal">#fffbf6f2</color>
+    <!--提示对话框按钮按下状态背景颜色-->
+    <color name="common_dialog_btn_press">#ffece5df</color>
+    <!--提示对话框分隔线颜色-->
+    <color name="common_dialog_divider">#ffe8e0da</color>
+    <!--提示对话框标题颜色-->
+    <color name="common_dialog_title">#ffF0D079</color>
+    <!--提示对话框内容颜色-->
+    <color name="common_dialog_text_content">#ffa19d94</color>
+    <!--提示对话框按钮一般状态字体颜色-->
+    <color name="common_dialog_btn_common">#ff5f5f5f</color>
+    <!--提示对话框按钮禁止状态字体颜色-->
+    <color name="common_dialog_btn_disable">#ffbebbb4</color>
+    <!--提示对话框按钮选中状态字体颜色-->
+    <color name="common_dialog_btn_select">#ffF0D079</color>
+    <!--提示对话框列表分隔线的颜色-->
+    <color name="common_devideline_listview">#ffe5e2d4</color>
+
+</resources>

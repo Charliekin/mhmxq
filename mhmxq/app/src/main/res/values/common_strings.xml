@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="common_wait">请稍等…</string>
+    <string name="common_search">搜索</string>
+    <string name="common_error">请求失败</string>
+    <string name="common_choose">选择</string>
+    <string name="common_delete">删除</string>
+    <string name="common_cancel">取消</string>
+    <string name="common_saving">正在保存</string>
+    <string name="save_success">保存成功</string>
+    <string name="common_ignore">忽略</string>
+
+    <!--Load more-->
+    <string name="common_load_more_loading">加载中…</string>
+    <string name="common_load_more_click_to_load_more">点击加载更多</string>
+    <string name="common_load_more_loaded_no_more">全部数据加载完毕</string>
+    <string name="common_load_more_loaded_empty">数据为空</string>
+    <string name="common_load_more_error">加载失败,点击重试</string>
+
+    <!--LoadingView-->
+    <string name="common_loading">正在加载…</string>
+    <string name="common_try_load">重新加载</string>
+    <string name="common_have_no_data">没有数据</string>
+    <string name="common_load_eror">加载失败</string>
+
+    <string name="request_no_network">没有网络</string>
+    <string name="request_common_error">请求失败</string>
+    <string name="request_need_login">需要登录</string>
+
+</resources>
