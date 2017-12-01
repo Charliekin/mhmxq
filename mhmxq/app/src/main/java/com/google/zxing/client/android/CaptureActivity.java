@@ -35,7 +35,6 @@ import android.widget.TextView;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
-import com.google.zxing.ResultMetadataType;
 import com.google.zxing.ResultPoint;
 import com.google.zxing.client.android.camera.CameraManager;
 import com.mhm.xq.MyApp;
@@ -48,7 +47,6 @@ import com.mhm.xq.utils.ToastUtil;
 
 import java.io.IOException;
 import java.util.Collection;
-import java.util.EnumSet;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -65,12 +63,6 @@ import butterknife.ButterKnife;
 public final class CaptureActivity extends BaseActivity implements SurfaceHolder.Callback {
 
     private static final String TAG = CaptureActivity.class.getSimpleName();
-    private static final Collection<ResultMetadataType> DISPLAYABLE_METADATA_TYPES =
-            EnumSet.of(ResultMetadataType.ISSUE_NUMBER,
-                    ResultMetadataType.SUGGESTED_PRICE,
-                    ResultMetadataType.ERROR_CORRECTION_LEVEL,
-                    ResultMetadataType.POSSIBLE_COUNTRY);
-
     @BindView(R.id.svScan)
     SurfaceView mSvScan;
     @BindView(R.id.vfwScan)
@@ -84,7 +76,6 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
     private Result savedResultToShow;
     private Result lastResult;
     private boolean hasSurface;
-    private IntentSource source;
     private Collection<BarcodeFormat> decodeFormats;
     private Map<DecodeHintType, ?> decodeHints;
     private String characterSet;
@@ -108,7 +99,6 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
-//        mVfwScan.setVisibility(View.GONE);
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.capture);
@@ -156,7 +146,6 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
 
         inactivityTimer.onResume();
 
-        source = IntentSource.NONE;
         decodeFormats = null;
         characterSet = null;
 
@@ -185,7 +174,7 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
         super.onDestroy();
     }
 
-    private void decodeOrStoreSavedBitmap(Bitmap bitmap, Result result) {
+    private void decodeOrStoreSavedBitmap(Result result) {
         // Bitmap isn't used yet -- will be used soon
         if (handler == null) {
             savedResultToShow = result;
@@ -308,7 +297,7 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
             if (handler == null) {
                 handler = new CaptureActivityHandler(this, decodeFormats, decodeHints, characterSet, cameraManager);
             }
-            decodeOrStoreSavedBitmap(null, null);
+            decodeOrStoreSavedBitmap(null);
         } catch (IOException ioe) {
             Log.w(TAG, ioe);
             displayFrameworkBugMessageAndExit();

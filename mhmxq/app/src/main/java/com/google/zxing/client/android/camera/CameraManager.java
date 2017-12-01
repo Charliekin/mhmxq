@@ -21,11 +21,13 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.hardware.Camera;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
 import com.google.zxing.PlanarYUVLuminanceSource;
 import com.google.zxing.client.android.camera.open.OpenCameraInterface;
+import com.mhm.xq.utils.ViewUtil;
 
 import java.io.IOException;
 
@@ -54,7 +56,6 @@ public final class CameraManager {
     private Rect framingRectInPreview;
     private boolean initialized;
     private boolean previewing;
-    private int requestedCameraId = OpenCameraInterface.NO_REQUESTED_CAMERA;
     private int requestedFramingRectWidth;
     private int requestedFramingRectHeight;
     /**
@@ -84,7 +85,7 @@ public final class CameraManager {
             }
             camera = theCamera;
         }
-
+        theCamera.setPreviewDisplay(holder);
         if (!initialized) {
             initialized = true;
             configManager.initFromCameraParameters(theCamera);
@@ -169,17 +170,15 @@ public final class CameraManager {
      * @param newSetting if {@code true}, light should be turned on if currently off. And vice versa.
      */
     public synchronized void setTorch(boolean newSetting) {
-        Camera theCamera = camera;
-        if (theCamera != null && newSetting != configManager.getTorchState(theCamera)) {
-            boolean wasAutoFocusManager = autoFocusManager != null;
-            if (wasAutoFocusManager) {
-                autoFocusManager.stop();
-                autoFocusManager = null;
-            }
-            configManager.setTorch(theCamera, newSetting);
-            if (wasAutoFocusManager) {
-                autoFocusManager = new AutoFocusManager(context, theCamera);
-                autoFocusManager.start();
+        if (newSetting != configManager.getTorchState(camera)) {
+            if (camera != null) {
+                if (autoFocusManager != null) {
+                    autoFocusManager.stop();
+                }
+                configManager.setTorch(camera, newSetting);
+                if (autoFocusManager != null) {
+                    autoFocusManager.start();
+                }
             }
         }
     }
@@ -220,6 +219,10 @@ public final class CameraManager {
 
             int width = findDesiredDimensionInRange(screenResolution.x, MIN_FRAME_WIDTH, MAX_FRAME_WIDTH);
             int height = findDesiredDimensionInRange(screenResolution.y, MIN_FRAME_HEIGHT, MAX_FRAME_HEIGHT);
+
+            DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+            width = metrics.widthPixels - ViewUtil.Companion.dipToPx(context, 55) * 2;
+            height = width;
 
             int leftOffset = (screenResolution.x - width) / 2;
             int topOffset = (screenResolution.y - height) / 2;
@@ -266,17 +269,6 @@ public final class CameraManager {
             framingRectInPreview = rect;
         }
         return framingRectInPreview;
-    }
-
-
-    /**
-     * Allows third party apps to specify the camera ID, rather than determine
-     * it automatically based on available cameras and their orientation.
-     *
-     * @param cameraId camera ID of the camera to use. A negative value means "no preference".
-     */
-    public synchronized void setManualCameraId(int cameraId) {
-        requestedCameraId = cameraId;
     }
 
     /**

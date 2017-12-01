@@ -12,6 +12,7 @@ import butterknife.OnClick
 import com.google.zxing.client.android.CaptureActivity
 import com.mhm.xq.R
 import com.mhm.xq.ui.base.fragment.BaseFragment
+import com.mhm.xq.ui.me.activity.MyQrActivity
 import com.mhm.xq.widget.CategoryNavigationBar
 
 class MeFragment : BaseFragment() {
@@ -49,8 +50,25 @@ class MeFragment : BaseFragment() {
 
     @OnClick(R.id.llMe, R.id.ivQrCode, R.id.cnbAttention, R.id.cnbCollect, R.id.cnbFeedback, R.id.cnbSet)
     fun onViewClick(view: View) {
-        if (view.id == R.id.llMe) {
-            startActivity(Intent(context, CaptureActivity::class.java))
+        when (view.id) {
+            R.id.llMe -> {
+                startActivity(Intent(context, CaptureActivity::class.java))
+            }
+            R.id.ivQrCode -> {
+                startActivity(Intent(context, MyQrActivity::class.java))
+            }
+            R.id.cnbAttention -> {
+
+            }
+            R.id.cnbCollect -> {
+
+            }
+            R.id.cnbFeedback -> {
+
+            }
+            R.id.cnbSet -> {
+
+            }
         }
     }
 }
