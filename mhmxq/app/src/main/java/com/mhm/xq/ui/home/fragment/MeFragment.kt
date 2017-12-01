@@ -11,6 +11,8 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 import com.google.zxing.client.android.CaptureActivity
 import com.mhm.xq.R
+import com.mhm.xq.bll.ConfigManager
+import com.mhm.xq.ui.auth.activity.SignActivity
 import com.mhm.xq.ui.base.fragment.BaseFragment
 import com.mhm.xq.ui.me.activity.MyQrActivity
 import com.mhm.xq.widget.CategoryNavigationBar
@@ -50,6 +52,10 @@ class MeFragment : BaseFragment() {
 
     @OnClick(R.id.llMe, R.id.ivQrCode, R.id.cnbAttention, R.id.cnbCollect, R.id.cnbFeedback, R.id.cnbSet)
     fun onViewClick(view: View) {
+        if (!ConfigManager.getInstance()!!.checkIsAuthLogin()) {
+            startActivity(Intent(context, SignActivity::class.java))
+            return
+        }
         when (view.id) {
             R.id.llMe -> {
                 startActivity(Intent(context, CaptureActivity::class.java))

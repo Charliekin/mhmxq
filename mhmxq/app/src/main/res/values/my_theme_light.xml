@@ -8,7 +8,7 @@
         <item name="android:textColorHint">@color/textColorTertiary</item>
 
         <item name="android:windowAnimationStyle">@style/ActivityHorizontalSlideAnimation</item>
-        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowBackground">@color/colorPrimaryBg</item>
 
     </style>
 
