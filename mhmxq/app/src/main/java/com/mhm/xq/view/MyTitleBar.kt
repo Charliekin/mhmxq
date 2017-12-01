@@ -36,7 +36,7 @@ class MyTitleBar : TitleBar {
         setTitle(context.getString(resId), isShowUpButton)
     }
 
-    fun addImageMenu(@DrawableRes iconRes: Int, onClickListener: View.OnClickListener): ImageView {
+    fun addImageMenu(@DrawableRes iconRes: Int, onClickListener: View.OnClickListener?): ImageView {
         val imageViewBuilder = RightImageViewBuilder(context)
         imageViewBuilder.drawable(iconRes)
         imageViewBuilder.clickListener(onClickListener)

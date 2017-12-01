@@ -6,6 +6,9 @@
     android:layout_height="match_parent">
 
     <com.mhm.xq.view.MyTitleBar
+        android:id="@+id/titleBar"
+        app:center_title_text_size="@dimen/titleCenterTextSize"
+        app:center_title_text_color="@color/white"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_bar_height"
         app:left_icon="@mipmap/back"

@@ -514,7 +514,7 @@ open class TitleBar : ViewGroup, View.OnClickListener {
             return this
         }
 
-        fun clickListener(listener: View.OnClickListener): RightViewBuilder<*> {
+        fun clickListener(listener: View.OnClickListener?): RightViewBuilder<*> {
             this.mListener = listener
             return this
         }

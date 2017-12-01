@@ -115,7 +115,7 @@ open class BaseActivity : RxAppCompatActivity(), KeyboardUtil.OnKeyboardStatusCh
         setTitleBarTitle(resources.getString(resId), isShowUpButton)
     }
 
-    fun setTitleBarRightIcon(@DrawableRes iconRes: Int, onClickListener: View.OnClickListener) {
+    fun setTitleBarRightIcon(@DrawableRes iconRes: Int, onClickListener: View.OnClickListener?) {
         getTitleBar()!!.getRightContainer().removeAllViews()
         getTitleBar()!!.addImageMenu(iconRes, onClickListener)
     }

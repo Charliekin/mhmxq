@@ -17,6 +17,8 @@
 
     <!--  editor-fold desc="login"  -->
 
+    <string name="login_user">用户名</string>
+    <string name="login_password">密码</string>
     <string name="login">登录</string>
     <string name="registration">注册</string>
     <string name="mobile_hint">请输入手机号</string>
