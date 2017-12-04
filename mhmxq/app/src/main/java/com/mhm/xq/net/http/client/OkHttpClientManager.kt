@@ -33,7 +33,7 @@ class OkHttpClientManager {
     }
 
     private constructor() {
-        val logging: HttpLoggingInterceptor = HttpLoggingInterceptor()
+        val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
         mCookieStore = PersistentCookieStore(MyApp.getContext()!!)
         val builder: OkHttpClient.Builder = OkHttpClient.Builder()
