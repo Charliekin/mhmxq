@@ -61,6 +61,10 @@
             android:name=".ui.auth.activity.RegisteredActivity"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".ui.auth.activity.ForgetPasswordActivity"
+            android:screenOrientation="portrait"/>
+
         <!--  editor-fold  -->
 
         <!--  editor-fold desc="general"  -->

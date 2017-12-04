@@ -14,6 +14,7 @@
     <string name="not_connected">%s (未连接)</string>
     <string name="network_error_hint">木有网，伐开心~</string>
     <string name="network_error_retry">戳我试试</string>
+    <string name="network_visit_error">网络访问错误</string>
 
     <!--  editor-fold desc="login"  -->
 
@@ -23,6 +24,7 @@
     <string name="registration">注册</string>
     <string name="mobile_hint">请输入手机号</string>
     <string name="password_hint">请输入密码</string>
+    <string name="forget_password">忘记密码</string>
 
     <!--  editor-fold  -->
 
