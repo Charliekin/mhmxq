@@ -28,7 +28,6 @@ import android.view.View;
 
 import com.google.zxing.ResultPoint;
 import com.google.zxing.client.android.camera.CameraManager;
-import com.mhm.xq.MyApp;
 import com.mhm.xq.R;
 import com.mhm.xq.utils.ViewUtil;
 
@@ -44,7 +43,7 @@ import java.util.List;
 public final class ViewfinderView extends View {
 
     private final int MAX_RESULT_POINTS = 20;
-    final String tip = MyApp.Companion.getContext().getResources().getString(R.string.scan_qr_code_tip);
+    final String tip = getResources().getString(R.string.scan_qr_code_tip);
     private CameraManager cameraManager;
     private final Paint paint;
     private Bitmap resultBitmap;

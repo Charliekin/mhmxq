@@ -37,7 +37,6 @@ import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
 import com.google.zxing.ResultPoint;
 import com.google.zxing.client.android.camera.CameraManager;
-import com.mhm.xq.MyApp;
 import com.mhm.xq.R;
 import com.mhm.xq.constacts.Extras;
 import com.mhm.xq.ui.base.activity.BaseActivity;
@@ -229,7 +228,7 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
 
     private boolean showScanResult(String content) {
         if (content == null) {
-            ToastUtil.Companion.show(MyApp.Companion.getContext(), R.string.scan_fail);
+            ToastUtil.Companion.show(this, R.string.scan_fail);
             return false;
         } else {
             Intent intent = new Intent();
