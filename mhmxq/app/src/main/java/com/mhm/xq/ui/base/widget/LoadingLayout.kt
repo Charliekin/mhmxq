@@ -25,10 +25,10 @@ class LoadingLayout : FrameLayout {
     }
 
 
-    constructor(context: Context) : super(context, null) {
+    constructor(context: Context) : this(context, null) {
     }
 
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs, 0) {
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0) {
     }
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {

@@ -41,6 +41,7 @@ open class LazyFragment : BaseFragment() {
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         LogUtil.v("onViewCreated")
         mFragmentLoadingLayout!!.showLoading()
         if (userVisibleHint && !mIsLoadedData) {

@@ -2,12 +2,39 @@ package com.mhm.xq.ui.home.fragment
 
 import android.os.Bundle
 import com.mhm.xq.R
-import com.mhm.xq.ui.base.fragment.BaseFragment
+import com.mhm.xq.net.http.rest.MyApi
+import com.mhm.xq.ui.base.fragment.LazyFragment
+import com.mhm.xq.utils.ToastUtil
+import com.trello.rxlifecycle2.android.FragmentEvent
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
-class HomePageFragment : BaseFragment() {
+class HomePageFragment : LazyFragment() {
 
-    override fun onCreateView(savedInstanceState: Bundle?) {
-        super.onCreateView(savedInstanceState)
-        setContentView(R.layout.my_fragment_home)
+    override fun onFragmentCreateView(savedInstanceState: Bundle?) {
+        super.onFragmentCreateView(savedInstanceState)
+        setFragmentContentView(R.layout.my_fragment_home)
+    }
+
+
+    override fun onLazyLoadingData() {
+        super.onLazyLoadingData()
+        loadNetChannel()
+    }
+
+    private fun loadNetChannel() {
+        MyApi.getChannel().compose(bindUntilEvent(FragmentEvent.DETACH))
+                .doOnSubscribe({ startProgressBar() })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ base ->
+                    closeProgressBar()
+                    getLoadingLayout().showContent()
+                    ToastUtil.show(this.context, base.getMessage())
+                }, { t ->
+                    closeProgressBar()
+                    getLoadingLayout().showContent()
+                    ToastUtil.show(this.context, "错误")
+                })
     }
 }

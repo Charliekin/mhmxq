@@ -1,6 +1,8 @@
 package com.mhm.xq.entity
 
-class User {
+import com.mhm.xq.entity.base.BaseEntity
+
+class User : BaseEntity() {
     private var id: String? = null
     private var name: String? = null
     private var mobile: String? = null

@@ -12,9 +12,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.mhm.xq.R
+import com.mhm.xq.ui.base.activity.BaseActivity
 import com.mhm.xq.utils.LogUtil
 import com.trello.rxlifecycle2.components.support.RxFragment
-import java.lang.Exception
 
 open class BaseFragment : RxFragment() {
 
@@ -24,6 +24,13 @@ open class BaseFragment : RxFragment() {
     protected var container: ViewGroup? = null
     protected var isViewCreated: Boolean = false
     protected var isInitViewFromCache: Boolean = false
+
+    //</editor-fold>
+
+
+    //<editor-fold desc="默认广播接收">
+
+    private var mInternalReceiver: InternalReceiver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,52 +51,73 @@ open class BaseFragment : RxFragment() {
         return rootView
     }
 
-    open fun onCreateView(savedInstanceState: Bundle?) {
-
-    }
-
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         isViewCreated = true
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+
     override fun onDestroyView() {
         super.onDestroyView()
-        isViewCreated = false
+        this.isViewCreated = false
         if (rootView != null) {
             (rootView!!.parent as ViewGroup).removeView(rootView)
         }
     }
 
+    //从网上拷贝的， 需要这个么？
     override fun onDetach() {
+        LogUtil.v("onDetach")
         super.onDetach()
         try {
-            activity.unregisterReceiver(mInternalReceiver)
+            getActivity().unregisterReceiver(mInternalReceiver)
         } catch (e: Exception) {
-            LogUtil.e("receiver error")
         }
+
         try {
             val childFragmentManager = Fragment::class.java.getDeclaredField("mChildFragmentManager")
             childFragmentManager.isAccessible = true
             childFragmentManager.set(this, null)
         } catch (e: NoSuchFieldException) {
-            Log.e("BaseFragment", e.message, e)
+            Log.e(TAG, e.message, e)
         } catch (e: IllegalAccessException) {
-            Log.e("BaseFragment", e.message, e)
+            Log.e(TAG, e.message, e)
         }
+
     }
 
-    fun setContentViews(view: View) {
-        rootView!!.removeView(view)
-        rootView!!.addView(view)
-        contentView = rootView
+    override fun onDestroy() {
+        try {
+            getActivity().unregisterReceiver(mInternalReceiver)
+        } catch (e: Exception) {
+        }
+
+        super.onDestroy()
+    }
+
+    open fun onCreateView(savedInstanceState: Bundle?) {
+        LogUtil.v("onCreateView")
     }
 
     fun setContentView(layoutResID: Int) {
         setContentViews(inflater!!.inflate(layoutResID, rootView, false))
     }
 
-    fun getRootView(): View {
+    fun setContentViews(view: View) {
+        rootView!!.removeAllViews()
+        rootView!!.addView(view)
+        contentView = view
+    }
+
+    fun getContentView(): FrameLayout? {
         return rootView!!
     }
 
@@ -97,40 +125,70 @@ open class BaseFragment : RxFragment() {
         return if (contentView != null) contentView!!.findViewById(id) else null
     }
 
-    //<editor-fold desc="默认广播接收">
+    //<editor-fold desc="dialog">
 
-    private var mInternalReceiver: InternalReceiver? = null
+    fun startProgressBar() {
+        if (getActivity() == null || getActivity() !is BaseActivity) {
+            return
+        }
+        (getActivity() as BaseActivity).startProgressBar()
+    }
 
-    public fun abstractRegister() {
+    fun closeProgressBar() {
+        if (getActivity() == null || getActivity() !is BaseActivity) {
+            return
+        }
+        (getActivity() as BaseActivity).closeProgressBar()
+
+    }
+
+    /**
+     * 子类需要重写此方法，指定需要注册的Action
+     */
+    fun abstractRegister() {
         registerReceiver(null)
     }
 
-    public fun registerReceiver(array: Array<String>?) {
-        val intentFilter: IntentFilter = IntentFilter()
-        if (array != null) {
-            for (str in array) {
-                intentFilter.addAction(str)
+    /**
+     * 注册接收者
+     *
+     * @param actionArray action数组, 不注册默认的action
+     */
+    protected fun registerReceiver(actionArray: Array<String>?) {
+        val intentfilter = IntentFilter()
+        if (actionArray != null) {
+            for (action in actionArray) {
+                intentfilter.addAction(action)
             }
         }
         if (mInternalReceiver == null) {
             mInternalReceiver = InternalReceiver()
         }
-        activity.registerReceiver(mInternalReceiver, intentFilter)
+        getActivity().registerReceiver(mInternalReceiver, intentfilter)
     }
 
-    public fun handleReceiver(context: Context?, intent: Intent?) {
-
-    }
+    /**
+     * 子类按需重写此方法, fragment不处理默认的广播
+     *
+     * @param context
+     * @param intent
+     */
+    protected fun handleReceiver(context: Context, intent: Intent) {}
 
     private inner class InternalReceiver : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
+
+        override fun onReceive(context: Context, intent: Intent?) {
             if (intent == null || intent.action == null) {
                 return
             }
             handleReceiver(context, intent)
         }
-
     }
 
-    //<editor-fold>
+    companion object {
+
+        private val TAG = BaseFragment::class.java.simpleName
+    }
+    //</editor-fold>
+
 }

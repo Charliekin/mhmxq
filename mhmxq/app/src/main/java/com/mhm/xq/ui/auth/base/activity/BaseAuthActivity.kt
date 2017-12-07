@@ -11,6 +11,7 @@ import butterknife.OnClick
 import com.mhm.xq.R
 import com.mhm.xq.entity.User
 import com.mhm.xq.ui.base.activity.BaseActivity
+import com.mhm.xq.utils.StringUtil
 import com.mhm.xq.utils.ToastUtil
 import com.trello.rxlifecycle2.android.ActivityEvent
 import io.reactivex.Observable
@@ -42,13 +43,25 @@ abstract class BaseAuthActivity : BaseActivity() {
         if (getNetData() == null) {
             return
         }
+        if (StringUtil.isBlank(getMobile())) {
+            ToastUtil.show(this, R.string.mobile_hint)
+            return
+        }
+        if (StringUtil.isBlank(getPassword())) {
+            ToastUtil.show(this, R.string.password_hint)
+            return
+        }
+        startProgressBar()
         getNetData()!!.compose(bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(Consumer { user ->
+                .doAfterNext(Consumer {
+                    closeProgressBar()
+                })
+                .subscribe({ user ->
                     loadComplete(user)
                 },
-                        Consumer { t ->
+                        { t ->
                             loadThrowable(t)
                         })
     }

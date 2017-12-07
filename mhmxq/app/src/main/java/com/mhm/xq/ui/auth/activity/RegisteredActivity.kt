@@ -7,7 +7,6 @@ import com.mhm.xq.R
 import com.mhm.xq.entity.User
 import com.mhm.xq.net.http.rest.MyApi
 import com.mhm.xq.ui.auth.base.activity.BaseAuthActivity
-import com.mhm.xq.utils.StringUtil
 import com.mhm.xq.utils.ToastUtil
 import io.reactivex.Observable
 
@@ -18,14 +17,6 @@ class RegisteredActivity : BaseAuthActivity() {
     }
 
     override fun getNetData(): Observable<User>? {
-        if (StringUtil.isBlank(getMobile())) {
-            ToastUtil.show(this, R.string.mobile_hint)
-            return null
-        }
-        if (StringUtil.isBlank(getPassword())) {
-            ToastUtil.show(this, R.string.password_hint)
-            return null
-        }
         return MyApi.registration(getMobile(), getPassword())
     }
 
@@ -43,6 +34,7 @@ class RegisteredActivity : BaseAuthActivity() {
 
     override fun loadComplete(user: User) {
         super.loadComplete(user)
+        ToastUtil.show(this, user.getMessage())
     }
 
     override fun loadThrowable(throwable: Throwable) {
