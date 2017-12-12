@@ -12,10 +12,10 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 import com.google.zxing.client.android.CaptureActivity
 import com.mhm.xq.R
+import com.mhm.xq.net.http.rest.MyApi
 import com.mhm.xq.net.http.rest.MyRetrofit
 import com.mhm.xq.ui.base.fragment.BaseFragment
 import com.mhm.xq.ui.me.activity.MyQrActivity
-import com.mhm.xq.utils.PermissionUtil
 import com.mhm.xq.utils.ToastUtil
 import com.mhm.xq.widget.CategoryNavigationBar
 import com.trello.rxlifecycle2.android.FragmentEvent
@@ -25,6 +25,8 @@ import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
 
 class MeFragment : BaseFragment() {
     @BindView(R.id.llMe)
@@ -57,7 +59,6 @@ class MeFragment : BaseFragment() {
         super.onCreateView(savedInstanceState)
         setContentView(R.layout.my_fragment_me)
         ButterKnife.bind(this, rootView!!)
-        PermissionUtil.verifyStoragePermissions(activity)
     }
 
     @OnClick(R.id.ivUserIcon, R.id.llMe, R.id.ivQrCode, R.id.cnbAttention, R.id.cnbCollect, R.id.cnbFeedback, R.id.cnbSet)
@@ -68,7 +69,8 @@ class MeFragment : BaseFragment() {
 //        }
         when (view.id) {
             R.id.ivUserIcon -> {
-                uploadUserIcon()
+//                uploadUserIcon()
+//                downloadUserIcon()
             }
             R.id.llMe -> {
                 startActivity(Intent(context, CaptureActivity::class.java))
@@ -108,5 +110,31 @@ class MeFragment : BaseFragment() {
                 }, { t ->
                     ToastUtil.show(this.context, t.message.toString())
                 })
+    }
+
+    private fun downloadUserIcon() {
+        MyApi.downloadUserIcon().compose(bindUntilEvent(FragmentEvent.DETACH))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ responseBody ->
+                    var ios: InputStream = responseBody.byteStream()
+                    var file = File(Environment.getExternalStorageDirectory(), "2.jpg")
+                    var fos = FileOutputStream(file)
+                    var buf = ByteArray(1024)
+                    while (len(ios, buf) != -1) {
+                        fos.write(buf, 0, len(ios, buf))
+                    }
+                    fos.flush()
+                    fos.close()
+                    ios.close()
+                    ToastUtil.show(this.context, "下载完了。。。")
+                }, { t ->
+                    ToastUtil.show(this.context, t.message.toString())
+                })
+    }
+
+    private fun len(ios: InputStream, buf: ByteArray): Int {
+        var len: Int = ios.read(buf)
+        return len
     }
 }

@@ -5,6 +5,7 @@ import com.mhm.xq.entity.base.BaseEntity;
 
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
+import okhttp3.ResponseBody;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -34,6 +35,9 @@ public interface IMyApi {
     @Multipart
     @POST("/fileUpload")
     Observable<BaseEntity> uploadUserIcon(@Part MultipartBody.Part icon);
+
+    @GET("fileUpload")
+    Observable<ResponseBody> downloadUserIcon();
 
     //<!--  editor-fold  -->
 

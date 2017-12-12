@@ -5,6 +5,7 @@ import com.mhm.xq.entity.base.BaseEntity;
 
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
+import okhttp3.ResponseBody;
 
 public class MyApi {
 
@@ -24,6 +25,10 @@ public class MyApi {
 
     public static Observable<BaseEntity> uploadUserIcon(MultipartBody.Part icon) {
         return MyRetrofit.getInstance().getApi().uploadUserIcon(icon);
+    }
+
+    public static Observable<ResponseBody> downloadUserIcon() {
+        return MyRetrofit.getInstance().getApi().downloadUserIcon();
     }
 
     //<!--  editor-fold  -->

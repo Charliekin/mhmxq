@@ -11,6 +11,7 @@ import com.mhm.xq.ui.base.activity.BaseActivity
 import com.mhm.xq.ui.base.widget.SimpleIndicatorView
 import com.mhm.xq.ui.home.adapter.GuidePagerAdapter
 import com.mhm.xq.utils.NavigationBarUtil
+import com.mhm.xq.utils.PermissionUtil
 
 
 class GuideActivity : BaseActivity() {
@@ -49,6 +50,7 @@ class GuideActivity : BaseActivity() {
         } else {
             mDecorView!!.systemUiVisibility = flag
         }
+        PermissionUtil.verifyStoragePermissions(this)
     }
 
     override fun onBackPressed() {
