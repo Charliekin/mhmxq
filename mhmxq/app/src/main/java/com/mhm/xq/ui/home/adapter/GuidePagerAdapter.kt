@@ -20,7 +20,7 @@ class GuidePagerAdapter(baseActivity: BaseActivity) : PagerAdapter() {
     private var mBaseActivity: BaseActivity? = baseActivity
     var mList: ArrayList<Int>? = null
 
-    override fun isViewFromObject(view: View?, `object`: Any?): Boolean {
+    override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view == `object`
     }
 
@@ -28,13 +28,13 @@ class GuidePagerAdapter(baseActivity: BaseActivity) : PagerAdapter() {
         return 3
     }
 
-    override fun destroyItem(container: ViewGroup?, position: Int, `object`: Any?) {
-        container!!.removeView(getView(position))
+    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+        container.removeView(getView(position))
     }
 
-    override fun instantiateItem(container: ViewGroup?, position: Int): Any {
+    override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val view: View = getView(position)
-        container!!.addView(view)
+        container.addView(view)
         return view
     }
 

@@ -40,7 +40,7 @@ open class LazyFragment : BaseFragment() {
         onFragmentCreateView(savedInstanceState)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         LogUtil.v("onViewCreated")
         mFragmentLoadingLayout!!.showLoading()
@@ -95,14 +95,10 @@ open class LazyFragment : BaseFragment() {
         onAfterLazyLoadingData()
     }
 
-    fun getLoadingLayout(): LoadingLayout {
-        return mFragmentLoadingLayout!!
-    }
+    fun getLoadingLayout(): LoadingLayout = mFragmentLoadingLayout!!
 
     @LayoutRes
-    open protected fun getLayoutResId(): Int {
-        return R.layout.common_fragment_lazy_empty_root
-    }
+    open protected fun getLayoutResId(): Int = R.layout.common_fragment_lazy_empty_root
 
     /**
      * 设置布局

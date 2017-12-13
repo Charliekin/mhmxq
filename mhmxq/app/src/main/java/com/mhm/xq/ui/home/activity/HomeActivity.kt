@@ -25,8 +25,6 @@ class HomeActivity : BaseActivity(), View.OnClickListener {
     @JvmField
     var mVpHome: ViewPager? = null
 
-    private val mInstances by lazy { this }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.my_activity_home)
@@ -64,9 +62,9 @@ class HomeActivity : BaseActivity(), View.OnClickListener {
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab!!.position != 0) {
-                    setTitleBarRightIcon(0, mInstances)
+                    setTitleBarRightIcon(0, this@HomeActivity)
                 } else {
-                    setTitleBarRightIcon(R.drawable.my_home_search_selector, mInstances)
+                    setTitleBarRightIcon(R.drawable.my_home_search_selector, this@HomeActivity)
                 }
             }
         })

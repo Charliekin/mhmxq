@@ -53,7 +53,7 @@ class SimpleIndicatorView : LinearLayout {
             mViewpager!!.addOnPageChangeListener(mInternalPageChangeListener)
             mInternalPageChangeListener.onPageSelected(mViewpager!!.currentItem)
 
-            mViewpager!!.adapter.registerDataSetObserver(getDataSetObserver())
+            mViewpager!!.adapter!!.registerDataSetObserver(getDataSetObserver())
         }
     }
 
@@ -70,7 +70,7 @@ class SimpleIndicatorView : LinearLayout {
 
         override fun onPageSelected(position: Int) {
 
-            if (mViewpager!!.adapter == null || mViewpager!!.adapter.count <= 0) {
+            if (mViewpager!!.adapter == null || mViewpager!!.adapter!!.count <= 0) {
                 return
             }
 
@@ -99,7 +99,7 @@ class SimpleIndicatorView : LinearLayout {
                 return
             }
 
-            val newCount = mViewpager!!.adapter.count
+            val newCount = mViewpager!!.adapter!!.count
             val currentCount = childCount
 
             if (newCount == currentCount) {
@@ -118,7 +118,7 @@ class SimpleIndicatorView : LinearLayout {
 
     private fun createIndicators() {
         removeAllViews()
-        val count = mViewpager!!.adapter.count
+        val count = mViewpager!!.adapter!!.count
         if (count <= 0) {
             return
         }

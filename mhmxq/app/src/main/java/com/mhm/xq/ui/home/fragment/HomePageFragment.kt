@@ -16,6 +16,10 @@ class HomePageFragment : LazyFragment() {
         setFragmentContentView(R.layout.my_fragment_home)
     }
 
+    override fun onFragmentResume(type: Int) {
+        super.onFragmentResume(type)
+        getLoadingLayout().showContent()
+    }
 
     override fun onLazyLoadingData() {
         super.onLazyLoadingData()

@@ -37,7 +37,7 @@ open class BaseFragment : RxFragment() {
         abstractRegister()
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         LogUtil.v("onCreateView")
         this.inflater = inflater
         this.container = container
@@ -51,7 +51,7 @@ open class BaseFragment : RxFragment() {
         return rootView
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         isViewCreated = true
     }
@@ -78,7 +78,7 @@ open class BaseFragment : RxFragment() {
         LogUtil.v("onDetach")
         super.onDetach()
         try {
-            getActivity().unregisterReceiver(mInternalReceiver)
+            activity!!.unregisterReceiver(mInternalReceiver)
         } catch (e: Exception) {
         }
 
@@ -96,7 +96,7 @@ open class BaseFragment : RxFragment() {
 
     override fun onDestroy() {
         try {
-            getActivity().unregisterReceiver(mInternalReceiver)
+            getActivity()!!.unregisterReceiver(mInternalReceiver)
         } catch (e: Exception) {
         }
 
@@ -128,17 +128,17 @@ open class BaseFragment : RxFragment() {
     //<editor-fold desc="dialog">
 
     fun startProgressBar() {
-        if (getActivity() == null || getActivity() !is BaseActivity) {
+        if (activity == null || activity !is BaseActivity) {
             return
         }
-        (getActivity() as BaseActivity).startProgressBar()
+        (activity as BaseActivity).startProgressBar()
     }
 
     fun closeProgressBar() {
-        if (getActivity() == null || getActivity() !is BaseActivity) {
+        if (activity == null || activity !is BaseActivity) {
             return
         }
-        (getActivity() as BaseActivity).closeProgressBar()
+        (activity as BaseActivity).closeProgressBar()
 
     }
 
@@ -164,7 +164,7 @@ open class BaseFragment : RxFragment() {
         if (mInternalReceiver == null) {
             mInternalReceiver = InternalReceiver()
         }
-        getActivity().registerReceiver(mInternalReceiver, intentfilter)
+        activity!!.registerReceiver(mInternalReceiver, intentfilter)
     }
 
     /**

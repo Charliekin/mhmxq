@@ -25,11 +25,9 @@ class LoadingLayout : FrameLayout {
     }
 
 
-    constructor(context: Context) : this(context, null) {
-    }
+    constructor(context: Context) : this(context, null)
 
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0) {
-    }
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initAttrs(attrs)
@@ -39,22 +37,22 @@ class LoadingLayout : FrameLayout {
         if (attrs != null) {
             val attrsTypedArray = context.obtainStyledAttributes(attrs, R.styleable.LoadingLayout)
             if (attrsTypedArray != null) {
-                val resLoadingView = attrsTypedArray!!.getResourceId(R.styleable.LoadingLayout_loading_view,
+                val resLoadingView = attrsTypedArray.getResourceId(R.styleable.LoadingLayout_loading_view,
                         R.layout.common_view_loading)
-                val resErrorView = attrsTypedArray!!.getResourceId(R.styleable.LoadingLayout_error_view,
+                val resErrorView = attrsTypedArray.getResourceId(R.styleable.LoadingLayout_error_view,
                         R.layout.common_view_error)
-                val resEmptyView = attrsTypedArray!!.getResourceId(R.styleable.LoadingLayout_empty_view,
+                val resEmptyView = attrsTypedArray.getResourceId(R.styleable.LoadingLayout_empty_view,
                         R.layout.common_view_empty)
                 val inflater = LayoutInflater.from(context)
                 inflater.inflate(resEmptyView, this, true)
                 inflater.inflate(resErrorView, this, true)
                 inflater.inflate(resLoadingView, this, true)
-                attrsTypedArray!!.recycle()
+                attrsTypedArray.recycle()
             }
         }
     }
 
-    protected override fun onFinishInflate() {
+    override fun onFinishInflate() {
         super.onFinishInflate()
         if (childCount < 4) {
             throw IllegalStateException("content view can not be null")
@@ -65,7 +63,7 @@ class LoadingLayout : FrameLayout {
 
         val viewEmptyRetry = findViewById<View>(R.id.viewEmptyRetry)
         if (viewEmptyRetry != null) {
-            viewEmptyRetry!!.setOnClickListener(View.OnClickListener { v ->
+            viewEmptyRetry.setOnClickListener(View.OnClickListener { v ->
                 if (mOnRetryClickListener != null) {
                     mOnRetryClickListener!!.onClick(v)
                 }
@@ -74,7 +72,7 @@ class LoadingLayout : FrameLayout {
 
         val viewErrorRetry = findViewById<View>(R.id.viewErrorRetry)
         if (viewErrorRetry != null) {
-            viewErrorRetry!!.setOnClickListener(View.OnClickListener { v ->
+            viewErrorRetry.setOnClickListener(View.OnClickListener { v ->
                 if (mOnRetryClickListener != null) {
                     mOnRetryClickListener!!.onClick(v)
                 }

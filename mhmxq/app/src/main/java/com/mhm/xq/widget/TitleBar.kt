@@ -611,7 +611,7 @@ open class TitleBar : ViewGroup, View.OnClickListener {
         }
 
         fun color(@ColorRes colorRes: Int): RightTextViewBuilder {
-            this.mColorStateList = ContextCompat.getColorStateList(context, colorRes)
+            this.mColorStateList = ContextCompat.getColorStateList(context, colorRes)!!
             return this
         }
 

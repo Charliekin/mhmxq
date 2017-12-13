@@ -11,11 +11,13 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
 import com.google.zxing.client.android.CaptureActivity
+import com.mhm.xq.BuildConfig
 import com.mhm.xq.R
 import com.mhm.xq.net.http.rest.MyApi
 import com.mhm.xq.net.http.rest.MyRetrofit
-import com.mhm.xq.ui.base.fragment.BaseFragment
+import com.mhm.xq.ui.base.fragment.LazyFragment
 import com.mhm.xq.ui.me.activity.MyQrActivity
+import com.mhm.xq.utils.GlideUtil
 import com.mhm.xq.utils.ToastUtil
 import com.mhm.xq.widget.CategoryNavigationBar
 import com.trello.rxlifecycle2.android.FragmentEvent
@@ -28,7 +30,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 
-class MeFragment : BaseFragment() {
+class MeFragment : LazyFragment() {
     @BindView(R.id.llMe)
     @JvmField
     var mLlMe: LinearLayout? = null
@@ -54,11 +56,17 @@ class MeFragment : BaseFragment() {
     @JvmField
     var mCnbSet: CategoryNavigationBar? = null
 
-
-    override fun onCreateView(savedInstanceState: Bundle?) {
-        super.onCreateView(savedInstanceState)
-        setContentView(R.layout.my_fragment_me)
+    override fun onFragmentCreateView(savedInstanceState: Bundle?) {
+        super.onFragmentCreateView(savedInstanceState)
+        setFragmentContentView(R.layout.my_fragment_me)
         ButterKnife.bind(this, rootView!!)
+        GlideUtil.loadImage(this, BuildConfig.HTTP_HOST + "/files/1.png", R.mipmap.user_icon_default, mIvUserIcon)
+        GlideUtil.loadImage(this, BuildConfig.HTTP_HOST + "/files/3.png", R.mipmap.user_icon_default, mIvQrCode)
+    }
+
+    override fun onFragmentResume(type: Int) {
+        super.onFragmentResume(type)
+        getLoadingLayout().showContent()
     }
 
     @OnClick(R.id.ivUserIcon, R.id.llMe, R.id.ivQrCode, R.id.cnbAttention, R.id.cnbCollect, R.id.cnbFeedback, R.id.cnbSet)

@@ -8,23 +8,15 @@ import com.mhm.xq.ui.home.fragment.HelpFragment
 import com.mhm.xq.ui.home.fragment.HomePageFragment
 import com.mhm.xq.ui.home.fragment.MeFragment
 
-class HomeAdapter : FragmentPagerAdapter {
+class HomeAdapter(fg: FragmentManager) : FragmentPagerAdapter(fg) {
 
-    constructor(fg: FragmentManager) : super(fg) {
-
+    override fun getItem(position: Int): Fragment = when (position) {
+        0 -> HomePageFragment()
+        1 -> BabyFragment()
+        2 -> HelpFragment()
+        else -> MeFragment()
     }
 
-    override fun getItem(position: Int): Fragment {
-        return when (position) {
-            0 -> HomePageFragment()
-            1 -> BabyFragment()
-            2 -> HelpFragment()
-            else -> MeFragment()
-        }
-    }
-
-    override fun getCount(): Int {
-        return 4
-    }
+    override fun getCount(): Int = 4
 
 }
