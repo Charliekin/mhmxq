@@ -98,6 +98,26 @@
             android:name=".ui.me.activity.MyQrActivity"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".ui.me.activity.MyInfoActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.me.activity.MyAttention"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.me.activity.MyCollection"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.me.activity.MySetActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.me.activity.FeedbackActivity"
+            android:screenOrientation="portrait"/>
+
         <!--  editor-fold  -->
 
     </application>

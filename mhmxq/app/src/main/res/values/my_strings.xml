@@ -16,7 +16,7 @@
     <string name="network_error_retry">戳我试试</string>
     <string name="network_visit_error">网络访问错误</string>
 
-    <!--  editor-fold desc="login"  -->
+    <!--  editor-fold desc="auth ex"  -->
 
     <string name="login_user">用户名</string>
     <string name="login_password">密码</string>
@@ -57,6 +57,12 @@
     <string name="me_hint_name">mhm</string>
     <string name="me_qr_text">我的二维码</string>
     <string name="scan_qr_code_tip">将二维码放入框内, 可自动扫描</string>
+
+    <!--  editor-fold  -->
+
+    <!--  editor-fold desc="me info"  -->
+
+    <string name="my_info_title">个人信息</string>
 
     <!--  editor-fold  -->
 </resources>

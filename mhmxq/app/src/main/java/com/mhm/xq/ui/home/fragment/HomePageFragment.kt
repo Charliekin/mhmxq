@@ -28,8 +28,9 @@ class HomePageFragment : LazyFragment() {
 
     private fun loadNetChannel() {
         MyApi.getChannel().compose(bindUntilEvent(FragmentEvent.DETACH))
-                .doOnSubscribe({ startProgressBar() })
                 .subscribeOn(Schedulers.io())
+                .doOnSubscribe({ startProgressBar() })
+                .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ base ->
                     closeProgressBar()

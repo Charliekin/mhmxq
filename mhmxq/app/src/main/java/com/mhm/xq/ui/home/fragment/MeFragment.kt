@@ -10,14 +10,13 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
-import com.google.zxing.client.android.CaptureActivity
-import com.mhm.xq.BuildConfig
 import com.mhm.xq.R
+import com.mhm.xq.bll.ConfigManager
 import com.mhm.xq.net.http.rest.MyApi
 import com.mhm.xq.net.http.rest.MyRetrofit
+import com.mhm.xq.ui.auth.activity.SignActivity
 import com.mhm.xq.ui.base.fragment.LazyFragment
-import com.mhm.xq.ui.me.activity.MyQrActivity
-import com.mhm.xq.utils.GlideUtil
+import com.mhm.xq.ui.me.activity.*
 import com.mhm.xq.utils.ToastUtil
 import com.mhm.xq.widget.CategoryNavigationBar
 import com.trello.rxlifecycle2.android.FragmentEvent
@@ -60,8 +59,7 @@ class MeFragment : LazyFragment() {
         super.onFragmentCreateView(savedInstanceState)
         setFragmentContentView(R.layout.my_fragment_me)
         ButterKnife.bind(this, rootView!!)
-        GlideUtil.loadImage(this, BuildConfig.HTTP_HOST + "/files/1.png", R.mipmap.user_icon_default, mIvUserIcon)
-        GlideUtil.loadImage(this, BuildConfig.HTTP_HOST + "/files/3.png", R.mipmap.user_icon_default, mIvQrCode)
+//        GlideUtil.loadImage(this, BuildConfig.HTTP_HOST + "/files/1.png", R.mipmap.user_icon_default, mIvUserIcon)
     }
 
     override fun onFragmentResume(type: Int) {
@@ -69,36 +67,35 @@ class MeFragment : LazyFragment() {
         getLoadingLayout().showContent()
     }
 
-    @OnClick(R.id.ivUserIcon, R.id.llMe, R.id.ivQrCode, R.id.cnbAttention, R.id.cnbCollect, R.id.cnbFeedback, R.id.cnbSet)
+    @OnClick(R.id.llMe, R.id.ivQrCode, R.id.cnbAttention, R.id.cnbCollect, R.id.cnbFeedback, R.id.cnbSet)
     fun onViewClick(view: View) {
-//        if (!ConfigManager.getInstance()!!.checkIsAuthLogin()) {
-//            startActivity(Intent(context, SignActivity::class.java))
-//            return
-//        }
+        var intent = Intent()
         when (view.id) {
-            R.id.ivUserIcon -> {
-//                uploadUserIcon()
-//                downloadUserIcon()
-            }
             R.id.llMe -> {
-                startActivity(Intent(context, CaptureActivity::class.java))
+                intent.setClass(context, MyInfoActivity::class.java)
             }
             R.id.ivQrCode -> {
-                startActivity(Intent(context, MyQrActivity::class.java))
+                intent.setClass(context, MyQrActivity::class.java)
             }
             R.id.cnbAttention -> {
-
+                intent.setClass(context, MyAttention::class.java)
             }
             R.id.cnbCollect -> {
-
+                intent.setClass(context, MyCollection::class.java)
             }
             R.id.cnbFeedback -> {
-
+                intent.setClass(context, FeedbackActivity::class.java)
             }
             R.id.cnbSet -> {
-
+                intent.setClass(context, MySetActivity::class.java)
             }
         }
+        if (!ConfigManager.getInstance()!!.checkIsAuthLogin()) {
+            var signIntent = Intent(context, SignActivity::class.java)
+            startActivity(signIntent)
+            return
+        }
+        startActivity(intent)
     }
 
     private fun uploadUserIcon() {
