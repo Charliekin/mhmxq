@@ -12,7 +12,7 @@ class MyAttention : BaseActivity() {
     }
 
     private fun init() {
-        setTitleBarTitle(R.string.me_attention, true)
+        setTitleBarTitleLeft(R.string.me_attention, true)
     }
 
 

@@ -40,7 +40,7 @@ class MyQrActivity : BaseActivity() {
     }
 
     private fun init() {
-        setTitleBarTitle(R.string.me_qr_text, true)
+        setTitleBarTitleLeft(R.string.me_qr_text, true)
         initVariable()
     }
 

@@ -12,6 +12,6 @@ class MyCollection : BaseActivity() {
     }
 
     private fun init() {
-        setTitleBarTitle(R.string.me_collect, true)
+        setTitleBarTitleLeft(R.string.me_collect, true)
     }
 }

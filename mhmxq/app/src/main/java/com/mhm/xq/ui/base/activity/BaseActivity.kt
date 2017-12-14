@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.support.annotation.DrawableRes
 import android.support.annotation.StringRes
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
@@ -105,6 +106,11 @@ open class BaseActivity : RxAppCompatActivity(), KeyboardUtil.OnKeyboardStatusCh
 
     fun setTitleBarLeftText(resId: Int) {
         setTitleBarLeftText(resources.getString(resId))
+    }
+
+    fun setTitleBarTitleLeft(resId: Int, isShowUpButton: Boolean) {
+        setTitleBarTitle(resources.getString(resId), isShowUpButton)
+        getTitleBar()!!.setTitleGravity(Gravity.LEFT)
     }
 
     fun setTitleBarTitle(strText: String, isShowUpButton: Boolean) {

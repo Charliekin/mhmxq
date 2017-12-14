@@ -383,6 +383,10 @@ open class TitleBar : ViewGroup, View.OnClickListener {
         mTvTitle!!.setText(title)
     }
 
+    fun setTitleGravity(gravity: Int) {
+        mTvTitle!!.gravity = gravity
+    }
+
     fun setTitle(@StringRes res: Int) {
         setTitle(resources.getString(res))
     }

@@ -11,10 +11,8 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
 import com.mhm.xq.R
-import com.mhm.xq.bll.ConfigManager
 import com.mhm.xq.net.http.rest.MyApi
 import com.mhm.xq.net.http.rest.MyRetrofit
-import com.mhm.xq.ui.auth.activity.SignActivity
 import com.mhm.xq.ui.base.fragment.LazyFragment
 import com.mhm.xq.ui.me.activity.*
 import com.mhm.xq.utils.ToastUtil
@@ -90,11 +88,11 @@ class MeFragment : LazyFragment() {
                 intent.setClass(context, MySetActivity::class.java)
             }
         }
-        if (!ConfigManager.getInstance()!!.checkIsAuthLogin()) {
-            var signIntent = Intent(context, SignActivity::class.java)
-            startActivity(signIntent)
-            return
-        }
+//        if (!ConfigManager.getInstance()!!.checkIsAuthLogin()) {
+//            var signIntent = Intent(context, SignActivity::class.java)
+//            startActivity(signIntent)
+//            return
+//        }
         startActivity(intent)
     }
 

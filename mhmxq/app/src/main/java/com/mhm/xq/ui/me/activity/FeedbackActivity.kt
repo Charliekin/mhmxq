@@ -12,6 +12,6 @@ class FeedbackActivity : BaseActivity() {
     }
 
     private fun init() {
-        setTitleBarTitle(R.string.me_feedback, true)
+        setTitleBarTitleLeft(R.string.me_feedback, true)
     }
 }

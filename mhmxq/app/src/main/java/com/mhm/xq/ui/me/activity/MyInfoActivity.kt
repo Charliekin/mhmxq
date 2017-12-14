@@ -13,6 +13,6 @@ class MyInfoActivity : BaseActivity() {
     }
 
     private fun init() {
-        setTitleBarTitle(R.string.my_info_title, true)
+        setTitleBarTitleLeft(R.string.my_info_title, true)
     }
 }

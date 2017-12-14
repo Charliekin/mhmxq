@@ -12,6 +12,6 @@ class MySetActivity : BaseActivity() {
     }
 
     private fun init() {
-        setTitleBarTitle(R.string.me_set, true)
+        setTitleBarTitleLeft(R.string.me_set, true)
     }
 }
