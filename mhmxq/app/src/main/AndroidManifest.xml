@@ -87,7 +87,15 @@
         <!--  editor-fold desc="common"  -->
 
         <activity
-            android:name=".ui.common.ScanResultActivity"
+            android:name=".ui.common.activity.ScanResultActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.common.activity.GeneralViewPictureActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.common.activity.ChoosePhotoFromAlbumActivity"
             android:screenOrientation="portrait"/>
 
         <!--  editor-fold  -->

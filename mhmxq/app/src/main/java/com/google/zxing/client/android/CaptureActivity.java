@@ -40,7 +40,7 @@ import com.google.zxing.client.android.camera.CameraManager;
 import com.mhm.xq.R;
 import com.mhm.xq.constacts.Extras;
 import com.mhm.xq.ui.base.activity.BaseActivity;
-import com.mhm.xq.ui.common.ScanResultActivity;
+import com.mhm.xq.ui.common.activity.ScanResultActivity;
 import com.mhm.xq.ui.me.activity.MyQrActivity;
 import com.mhm.xq.utils.ToastUtil;
 

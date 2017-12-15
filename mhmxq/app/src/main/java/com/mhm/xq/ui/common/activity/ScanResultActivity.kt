@@ -1,4 +1,4 @@
-package com.mhm.xq.ui.common
+package com.mhm.xq.ui.common.activity
 
 import android.os.Bundle
 import com.mhm.xq.constacts.Extras

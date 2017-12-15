@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:height="0.5dp">
+    <item android:height="0.1dp">
         <color android:color="@color/white"/>
     </item>
     <item
-        android:height="0.5dp"
+        android:height="0.1dp"
         android:left="@dimen/left_margin"
         android:right="@dimen/left_margin">
         <color android:color="@color/divideLineColor"/>

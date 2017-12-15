@@ -66,7 +66,7 @@
     <View
         android:id="@+id/vDivideAttention"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="0.1dp"
         app:layout_constraintBottom_toTopOf="@id/cnbCollect"
         app:layout_constraintTop_toBottomOf="@id/cnbAttention"
         android:background="@drawable/common_margin_divide_line"/>
@@ -83,7 +83,7 @@
     <View
         android:id="@+id/vDivideCollect"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="0.1dp"
         app:layout_constraintBottom_toTopOf="@id/cnbFeedback"
         app:layout_constraintTop_toBottomOf="@id/cnbCollect"
         android:background="@drawable/common_margin_divide_line"/>

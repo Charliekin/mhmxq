@@ -409,4 +409,7 @@ class CategoryNavigationBar : ViewGroup {
         return mRightIV!!
     }
 
+    public fun getRightIv(): ImageView {
+        return mRightIV!!
+    }
 }

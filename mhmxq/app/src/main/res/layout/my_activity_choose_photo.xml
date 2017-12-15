@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.mhm.xq.view.MyTitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        app:center_title_text_color="@color/white"
+        app:center_title_text_size="@dimen/titleCenterTextSize"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:left_icon="@mipmap/back"/>
+
+    <TextView
+        android:id="@+id/tvChoosePhoto"
+        android:layout_width="0dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:gravity="center_vertical"
+        android:background="@color/colorPrimaryBg"
+        android:paddingLeft="@dimen/left_margin"
+        android:paddingRight="@dimen/left_margin"
+        android:text="@string/all_picture"
+        android:textSize="@dimen/textSizePrimary"
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvChoosePhoto"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvChoosePhoto"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/tvChoosePhoto"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleBar"
+        app:layout_constraintVertical_weight="1"/>
+
+</android.support.constraint.ConstraintLayout>

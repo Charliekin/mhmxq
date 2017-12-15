@@ -6,6 +6,10 @@
     <string name="confirm">确定</string>
     <string name="cancel">取消</string>
     <string name="wait">正在加载…</string>
+    <string name="my_head_icon">头像</string>
+    <string name="picture">图片</string>
+    <string name="all_picture">所有图片</string>
+    <string name="beyond_picture">所有图片</string>
 
     <!--net error-->
 
@@ -34,7 +38,7 @@
 
     <!--  editor-fold  -->
 
-    <!--  editor-fold desc="guide"  -->
+    <!--  editor-fold desc="home"  -->
 
     <string name="home_tab_page">首页</string>
     <string name="home_tab_disaster">宝贝</string>
@@ -63,6 +67,10 @@
     <!--  editor-fold desc="me info"  -->
 
     <string name="my_info_title">个人信息</string>
+    <string name="my_nick_name">昵称</string>
+    <string name="my_name">名称</string>
+    <string name="my_qr_card">二维码名片</string>
+    <string name="my_gender">性别</string>
 
     <!--  editor-fold  -->
 </resources>
