@@ -12,13 +12,8 @@ import com.mhm.xq.entity.Photo
 import com.mhm.xq.ui.base.adapter.BaseRcvAdapter
 import com.mhm.xq.ui.base.adapter.BaseRcvViewHolder
 import com.mhm.xq.utils.GlideUtil
-import com.mhm.xq.utils.ToastUtil
 
-class ChoosePhotoAdapter : BaseRcvAdapter<Photo>() {
-
-    var mSelectorPosition: ArrayList<Photo> = ArrayList()
-    val MAX_PIC: Int = 9
-
+class ChooseSinglePhotoAdapter : BaseRcvAdapter<Photo>() {
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder =
             ViewHolder(parent)
 
@@ -40,26 +35,16 @@ class ChoosePhotoAdapter : BaseRcvAdapter<Photo>() {
         override fun onSetViews() {
             itemView.setOnClickListener(object : View.OnClickListener {
                 override fun onClick(p0: View?) {
-                    if (mSelectorPosition.size >= MAX_PIC) {
-                        ToastUtil.show(MyApp.getContext()!!,
-                                String.format(MyApp.getContext()!!.resources.getString(R.string.beyond_picture), MAX_PIC))
-                        return
-                    }
-                    if (mSelectorPosition.contains(getDataList()[sPosition!!])) {
-                        mSelectorPosition.remove(getDataList()[sPosition!!])
-                        mIvCPSelector!!.isSelected = false
-                    } else {
-                        mIvCPSelector!!.isSelected = true
-                        mSelectorPosition.add(getDataList()[sPosition!!])
-                    }
+                    //TODO 跳转到裁剪页
                 }
             })
         }
 
         override fun onUpdateViews(model: Photo, position: Int) {
-            mIvCPSelector!!.isSelected = mSelectorPosition.contains(model)
+            mIvCPSelector!!.visibility = View.GONE
             GlideUtil.loadLocalFromUri(MyApp.getContext()!!, model.getPath(), mIvChoosePhoto!!)
         }
 
     }
+
 }

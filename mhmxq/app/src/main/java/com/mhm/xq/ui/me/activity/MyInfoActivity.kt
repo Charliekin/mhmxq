@@ -7,6 +7,8 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
 import com.mhm.xq.R
+import com.mhm.xq.constacts.ExtraValues
+import com.mhm.xq.constacts.Extras
 import com.mhm.xq.ui.base.activity.BaseActivity
 import com.mhm.xq.ui.common.activity.ChoosePhotoFromAlbumActivity
 import com.mhm.xq.ui.common.activity.GeneralViewPictureActivity
@@ -57,6 +59,7 @@ class MyInfoActivity : BaseActivity() {
         when (view.id) {
             R.id.cnbInfoIcon -> {
                 intent.setClass(this, ChoosePhotoFromAlbumActivity::class.java)
+                intent.putExtra(Extras.CHOOSE_PHOTO, ExtraValues.CHOOSE_SINGLE_PHOTO)
             }
             R.id.cnbInfoName -> {
 

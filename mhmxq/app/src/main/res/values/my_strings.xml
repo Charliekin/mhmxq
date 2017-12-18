@@ -9,7 +9,7 @@
     <string name="my_head_icon">头像</string>
     <string name="picture">图片</string>
     <string name="all_picture">所有图片</string>
-    <string name="beyond_picture">所有图片</string>
+    <string name="beyond_picture">所选图片不能超过%d张</string>
 
     <!--net error-->
 

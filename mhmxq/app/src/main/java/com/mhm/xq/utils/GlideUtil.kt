@@ -22,5 +22,17 @@ class GlideUtil {
         fun loadImage(context: Context, url: String, @DrawableRes resId: Int, iv: ImageView) {
             GlideApp.with(context).asBitmap().apply(MyRequestOptions.build(resId)).load(url).into(iv)
         }
+
+        fun loadLocalFromUri(activity: Activity, url: String, iv: ImageView) {
+            GlideApp.with(activity).asBitmap().load(url).centerCrop().into(iv)
+        }
+
+        fun loadLocalFromUri(fragment: Fragment, url: String, iv: ImageView?) {
+            GlideApp.with(fragment).asBitmap().load(url).centerCrop().into(iv)
+        }
+
+        fun loadLocalFromUri(context: Context, url: String, iv: ImageView) {
+            GlideApp.with(context).asBitmap().load(url).centerCrop().into(iv)
+        }
     }
 }

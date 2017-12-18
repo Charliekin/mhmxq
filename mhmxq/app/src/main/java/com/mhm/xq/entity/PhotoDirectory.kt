@@ -5,7 +5,7 @@ class PhotoDirectory {
     private var coverPath: String? = null
     private var name: String? = null
     private var dateAdded: Long? = null
-    private var photos: ArrayList<Photo>? = null
+    private var photos: ArrayList<Photo>? = ArrayList()
 
     override fun equals(o: Any?): Boolean {
         if (this === o) return true
