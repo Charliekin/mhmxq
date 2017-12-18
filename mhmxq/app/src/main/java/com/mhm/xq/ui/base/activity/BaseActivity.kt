@@ -19,6 +19,7 @@ import com.mhm.xq.bll.ConfigManager
 import com.mhm.xq.constacts.Actions
 import com.mhm.xq.ui.base.dialog.CommonProgressDialog
 import com.mhm.xq.ui.base.view.NoNetworkTipView
+import com.mhm.xq.ui.common.dialog.BottomDialogFragment
 import com.mhm.xq.utils.ActivityUtil
 import com.mhm.xq.utils.KeyboardUtil
 import com.mhm.xq.utils.NetUtil
@@ -284,6 +285,7 @@ open class BaseActivity : RxAppCompatActivity(), KeyboardUtil.OnKeyboardStatusCh
     }
 
     //</editor-fold>
+
     //<editor-fold desc="dialog">
 
     protected var mProgressDialog: CommonProgressDialog? = null
@@ -303,6 +305,11 @@ open class BaseActivity : RxAppCompatActivity(), KeyboardUtil.OnKeyboardStatusCh
             mProgressDialog!!.dismiss()
         }
 
+    }
+
+    fun doMore() {
+        var dialog = BottomDialogFragment()
+        dialog.show(supportFragmentManager, "more_dialog")
     }
 
     //</editor-fold>

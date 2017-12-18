@@ -6,4 +6,12 @@
         <attr name="indicatorNormal" format="reference"/>
         <attr name="indicatorMargin" format="dimension"/>
     </declare-styleable>
+
+    <declare-styleable name="FixStatusBarBottomSheetDialog">
+        <attr name="bottomSheetDialogState" format="enum">
+            <enum name="expanded" value="0"/>
+            <enum name="collapsed" value="1"/>
+            <enum name="hidden" value="2"/>
+        </attr>
+    </declare-styleable>
 </resources>
