@@ -26,7 +26,7 @@ class ChoosePhotoFromAlbumActivity : BaseActivity(), View.OnClickListener, BaseR
     @JvmField
     var mRvChoosePhoto: RecyclerView? = null
 
-    var mExtra: Int? = null
+    private var mExtra: Int? = null
     var mChoosePhotoAdapter: ChoosePhotoAdapter? = null
     var mChooseSinglePhotoAdapter: ChooseSinglePhotoAdapter? = null
     var mPhotoDirectories: ArrayList<PhotoDirectory>? = ArrayList()
@@ -48,7 +48,7 @@ class ChoosePhotoFromAlbumActivity : BaseActivity(), View.OnClickListener, BaseR
         setTitleBarTitleLeft(R.string.picture, true)
         setTitleBarRightIcon(R.drawable.menu_share_more, this)
         mExtra = intent.getIntExtra(Extras.CHOOSE_PHOTO, -1)
-        var manager = GridLayoutManager(this, 3)
+        val manager = GridLayoutManager(this, 3)
         mRvChoosePhoto!!.layoutManager = manager
         if (mExtra == ExtraValues.CHOOSE_MORE_PHOTO) {
             mChoosePhotoAdapter = ChoosePhotoAdapter()
@@ -108,10 +108,5 @@ class ChoosePhotoFromAlbumActivity : BaseActivity(), View.OnClickListener, BaseR
     }
 
     override fun onItemClick(v: View?, position: Int?) {
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
     }
 }
