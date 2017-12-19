@@ -17,6 +17,8 @@ import android.widget.FrameLayout
 import com.mhm.xq.R
 import com.mhm.xq.bll.ConfigManager
 import com.mhm.xq.constacts.Actions
+import com.mhm.xq.constacts.Extras
+import com.mhm.xq.ui.base.adapter.BaseRcvAdapter
 import com.mhm.xq.ui.base.dialog.CommonProgressDialog
 import com.mhm.xq.ui.base.view.NoNetworkTipView
 import com.mhm.xq.ui.common.dialog.BottomDialogFragment
@@ -27,7 +29,6 @@ import com.mhm.xq.utils.StatusBarUtil
 import com.mhm.xq.view.MyTitleBar
 import com.mhm.xq.widget.TitleBar
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
-import java.util.*
 
 open class BaseActivity : RxAppCompatActivity(), KeyboardUtil.OnKeyboardStatusChangedListener {
 
@@ -307,9 +308,16 @@ open class BaseActivity : RxAppCompatActivity(), KeyboardUtil.OnKeyboardStatusCh
 
     }
 
-    fun doMore() {
-        var dialog = BottomDialogFragment()
+    fun doMore(onItemClickListener: BaseRcvAdapter.OnItemClickListener?, list: ArrayList<String>):
+            BottomDialogFragment {
+        var dialog = BottomDialogFragment(onItemClickListener)
+        if (list.isNotEmpty()) {
+            var bundle = Bundle()
+            bundle.putStringArrayList(Extras.BOTTOM_DIALOG_ARGUMENT, list)
+            dialog.arguments = bundle
+        }
         dialog.show(supportFragmentManager, "more_dialog")
+        return dialog
     }
 
     //</editor-fold>

@@ -11,6 +11,8 @@
     <string name="all_picture">所有图片</string>
     <string name="beyond_picture">所选图片不能超过%d张</string>
 
+    <!--  editor-fold  -->
+
     <!--net error-->
 
     <string name="have_no_network">网络请求失败，请检查您的网络设置</string>
@@ -19,6 +21,8 @@
     <string name="network_error_hint">木有网，伐开心~</string>
     <string name="network_error_retry">戳我试试</string>
     <string name="network_visit_error">网络访问错误</string>
+
+    <!--  editor-fold  -->
 
     <!--  editor-fold desc="auth ex"  -->
 

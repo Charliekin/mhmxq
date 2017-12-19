@@ -128,7 +128,7 @@ abstract class BaseRcvAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     interface OnItemClickListener {
-        fun onItemClick(v: View, position: Int)
+        fun onItemClick(v: View?, position: Int?)
     }
 
     interface OnItemLongClickListener<T> {

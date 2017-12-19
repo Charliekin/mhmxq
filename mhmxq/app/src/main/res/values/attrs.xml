@@ -14,4 +14,13 @@
             <enum name="hidden" value="2"/>
         </attr>
     </declare-styleable>
+
+    <string-array name="BottomDialogPic">
+        <item>拍照</item>
+    </string-array>
+
+    <string-array name="BottomDialogAlbumPres">
+        <item>从手机相册中选择</item>
+        <item>保存到手机</item>
+    </string-array>
 </resources>

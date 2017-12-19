@@ -14,11 +14,13 @@ import com.mhm.xq.constacts.Extras
 import com.mhm.xq.entity.PhotoDirectory
 import com.mhm.xq.glide.GlideApp
 import com.mhm.xq.ui.base.activity.BaseActivity
+import com.mhm.xq.ui.base.adapter.BaseRcvAdapter
 import com.mhm.xq.ui.common.adapter.ChoosePhotoAdapter
 import com.mhm.xq.ui.common.adapter.ChooseSinglePhotoAdapter
+import com.mhm.xq.utils.ListUtils
 import com.mhm.xq.utils.MediaStoreHelper
 
-class ChoosePhotoFromAlbumActivity : BaseActivity() {
+class ChoosePhotoFromAlbumActivity : BaseActivity(), View.OnClickListener, BaseRcvAdapter.OnItemClickListener {
 
     @BindView(R.id.rvChoosePhoto)
     @JvmField
@@ -44,6 +46,7 @@ class ChoosePhotoFromAlbumActivity : BaseActivity() {
 
     private fun initVariables() {
         setTitleBarTitleLeft(R.string.picture, true)
+        setTitleBarRightIcon(R.drawable.menu_share_more, this)
         mExtra = intent.getIntExtra(Extras.CHOOSE_PHOTO, -1)
         var manager = GridLayoutManager(this, 3)
         mRvChoosePhoto!!.layoutManager = manager
@@ -97,6 +100,14 @@ class ChoosePhotoFromAlbumActivity : BaseActivity() {
 
             })
         }
+    }
+
+    override fun onClick(p0: View?) {
+        doMore(this,
+                ListUtils.convertToList(resources.getStringArray(R.array.BottomDialogPic)) as ArrayList<String>)
+    }
+
+    override fun onItemClick(v: View?, position: Int?) {
     }
 
     override fun onDestroy() {
