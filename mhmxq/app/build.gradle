@@ -54,7 +54,7 @@ android {
             applicationIdSuffix
             signingConfig signingConfigs.release
             manifestPlaceholders += [APP_NAME: 'xq']
-            buildConfigField("String", "HTTP_HOST", '"http://172.16.20.29:8080"')
+            buildConfigField("String", "HTTP_HOST", '"http://172.16.20.118:8080"')
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -63,7 +63,7 @@ android {
             applicationIdSuffix ".test"
             signingConfig signingConfigs.debug
             manifestPlaceholders += [APP_NAME: 'xqBeta']
-            buildConfigField("String", "HTTP_HOST", '"http://172.16.20.29:8080"')
+            buildConfigField("String", "HTTP_HOST", '"http://172.16.20.118:8080"')
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
