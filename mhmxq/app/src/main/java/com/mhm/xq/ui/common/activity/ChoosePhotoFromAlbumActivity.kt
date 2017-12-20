@@ -15,6 +15,7 @@ import com.mhm.xq.entity.PhotoDirectory
 import com.mhm.xq.glide.GlideApp
 import com.mhm.xq.ui.base.activity.BaseActivity
 import com.mhm.xq.ui.base.adapter.BaseRcvAdapter
+import com.mhm.xq.ui.common.adapter.BaseChoosePhotoAdapter
 import com.mhm.xq.ui.common.adapter.ChoosePhotoAdapter
 import com.mhm.xq.ui.common.adapter.ChooseSinglePhotoAdapter
 import com.mhm.xq.utils.ListUtils
@@ -27,8 +28,7 @@ class ChoosePhotoFromAlbumActivity : BaseActivity(), View.OnClickListener, BaseR
     var mRvChoosePhoto: RecyclerView? = null
 
     private var mExtra: Int? = null
-    var mChoosePhotoAdapter: ChoosePhotoAdapter? = null
-    var mChooseSinglePhotoAdapter: ChooseSinglePhotoAdapter? = null
+    var mAdapter: BaseChoosePhotoAdapter? = null
     var mPhotoDirectories: ArrayList<PhotoDirectory>? = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,13 +50,12 @@ class ChoosePhotoFromAlbumActivity : BaseActivity(), View.OnClickListener, BaseR
         mExtra = intent.getIntExtra(Extras.CHOOSE_PHOTO, -1)
         val manager = GridLayoutManager(this, 3)
         mRvChoosePhoto!!.layoutManager = manager
-        if (mExtra == ExtraValues.CHOOSE_MORE_PHOTO) {
-            mChoosePhotoAdapter = ChoosePhotoAdapter()
-            mRvChoosePhoto!!.adapter = mChoosePhotoAdapter
+        mAdapter = if (mExtra == ExtraValues.CHOOSE_MORE_PHOTO) {
+            ChoosePhotoAdapter()
         } else {
-            mChooseSinglePhotoAdapter = ChooseSinglePhotoAdapter()
-            mRvChoosePhoto!!.adapter = mChooseSinglePhotoAdapter
+            ChooseSinglePhotoAdapter()
         }
+        mRvChoosePhoto!!.adapter = mAdapter
     }
 
     private fun initData() {
@@ -65,11 +64,7 @@ class ChoosePhotoFromAlbumActivity : BaseActivity(), View.OnClickListener, BaseR
                 mPhotoDirectories!!.clear()
                 mPhotoDirectories!!.addAll(directories)
                 if (mPhotoDirectories!!.isNotEmpty()) {
-                    if (mChoosePhotoAdapter != null) {
-                        mChoosePhotoAdapter!!.changeDataList(mPhotoDirectories!![0].getPhotos())
-                    } else {
-                        mChooseSinglePhotoAdapter!!.changeDataList(mPhotoDirectories!![0].getPhotos())
-                    }
+                    mAdapter!!.changeDataList(mPhotoDirectories!![0].getPhotos())
                 }
             }
         })
