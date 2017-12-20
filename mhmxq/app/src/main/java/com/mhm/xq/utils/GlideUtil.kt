@@ -74,8 +74,7 @@ class GlideUtil {
                 }
             }).subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe({ file ->
-                        LogUtil.i("---->>>>   " + file)
+                    .subscribe({
                         ToastUtil.show(MyApp.getContext()!!, R.string.save_success)
                     }, {
                         ToastUtil.show(MyApp.getContext()!!, R.string.common_error)
