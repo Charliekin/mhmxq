@@ -57,7 +57,7 @@ class MeFragment : LazyFragment() {
         super.onFragmentCreateView(savedInstanceState)
         setFragmentContentView(R.layout.my_fragment_me)
         ButterKnife.bind(this, rootView!!)
-//        GlideUtil.loadImage(this, BuildConfig.HTTP_HOST + "/files/1.png", R.mipmap.user_icon_default, mIvUserIcon)
+//        GlideUtil.loadImage(this, "http://www.guolin.tech/book.png", R.mipmap.user_icon_default, mIvUserIcon)
     }
 
     override fun onFragmentResume(type: Int) {

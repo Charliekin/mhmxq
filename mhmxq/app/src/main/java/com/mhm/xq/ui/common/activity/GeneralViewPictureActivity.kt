@@ -3,16 +3,25 @@ package com.mhm.xq.ui.common.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import butterknife.BindView
+import butterknife.ButterKnife
+import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 import com.mhm.xq.R
+import com.mhm.xq.bll.DownloadManager
 import com.mhm.xq.ui.base.activity.BaseActivity
 import com.mhm.xq.ui.base.adapter.BaseRcvAdapter
 import com.mhm.xq.utils.ListUtils
 
 class GeneralViewPictureActivity : BaseActivity(), View.OnClickListener, BaseRcvAdapter.OnItemClickListener {
 
+    @BindView(R.id.svViewPic)
+    @JvmField
+    var mSvViewPic: SubsamplingScaleImageView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.my_activity_general_view_pic)
+        ButterKnife.bind(this)
         init()
     }
 
@@ -32,7 +41,7 @@ class GeneralViewPictureActivity : BaseActivity(), View.OnClickListener, BaseRcv
                 startActivity(Intent(this, ChoosePhotoFromAlbumActivity::class.java))
             }
             1 -> {
-
+                DownloadManager.saveImage(this, "http://www.guolin.tech/book.png", 0, 0)
             }
         }
     }
