@@ -99,9 +99,16 @@ class ChoosePhotoFromAlbumActivity : BaseActivity(), View.OnClickListener, BaseR
 
     override fun onClick(p0: View?) {
         doMore(this,
-                ListUtils.convertToList(resources.getStringArray(R.array.BottomDialogPic)) as ArrayList<String>)
+                ListUtils.convertToList(resources.getStringArray(R.array.BottomDialogPic))
+                        as ArrayList<String>)
     }
 
     override fun onItemClick(v: View?, position: Int?) {
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mPhotoDirectories!!.clear()
+        mPhotoDirectories = null
     }
 }
