@@ -36,10 +36,10 @@ class HomePageFragment : LazyFragment() {
                     closeProgressBar()
                     getLoadingLayout().showContent()
                     ToastUtil.show(this.context, base.getMessage())
-                }, { t ->
+                }, {
                     closeProgressBar()
                     getLoadingLayout().showContent()
-                    ToastUtil.show(this.context, "错误")
+                    ToastUtil.show(this.context!!, R.string.common_error)
                 })
     }
 }
