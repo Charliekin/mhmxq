@@ -2,9 +2,9 @@ package com.mhm.xq.ui.base.activity
 
 import com.trello.rxlifecycle2.android.ActivityEvent
 import io.reactivex.Observable
+import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 
 open abstract class BaseIndexPageActivity<T> : BaseLoadingLayoutActivity() {
@@ -34,21 +34,19 @@ open abstract class BaseIndexPageActivity<T> : BaseLoadingLayoutActivity() {
     }
 
     fun loadFirstPageData(isNeedLocal: Boolean) {
-        mDisposableFirstPage = getFirstPageObservable(isNeedLocal)
+        getFirstPageObservable(isNeedLocal)
                 .compose(bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(BaseConsumer(LoadType.firstPage),
-                        BaseThrowableConsumer(LoadType.firstPage))
+                .subscribe(BaseObserver(LoadType.firstPage))
     }
 
     fun loadOlderPagerData() {
-        mDisposableOlderPage = getIndexPageObservable(LoadType.olderPage)
+        getIndexPageObservable(LoadType.olderPage)
                 .compose(bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(BaseConsumer(LoadType.olderPage),
-                        BaseThrowableConsumer(LoadType.olderPage))
+                .subscribe(BaseObserver(LoadType.olderPage))
     }
 
     protected fun isLoadingData(): Boolean {
@@ -85,37 +83,43 @@ open abstract class BaseIndexPageActivity<T> : BaseLoadingLayoutActivity() {
 
     abstract fun getPageSize(): Int
 
-    inner class BaseConsumer<T> : Consumer<T> {
-        var mLoadType: LoadType? = null
+    inner class BaseObserver : Observer<T> {
 
-        constructor(loadType: LoadType) {
+        var mLoadType: BaseLoadingLayoutActivity.LoadType? = null
+        var mLastResult: T? = null
+
+        constructor(loadType: BaseLoadingLayoutActivity.LoadType?) {
             mLoadType = loadType
         }
 
-        override fun accept(t: T) {
+        override fun onSubscribe(d: Disposable) {
+            if (mLoadType == BaseLoadingLayoutActivity.LoadType.firstPage) {
+                mDisposableFirstPage = d
+            } else {
+                mDisposableOlderPage = d
+            }
+        }
+
+        override fun onComplete() {
+            loadCompleteCallback(mLoadType!!, mLastResult)
+        }
+
+        override fun onNext(t: T) {
+            mLastResult = t
             when (mLoadType) {
-                LoadType.firstPage -> {
+                BaseLoadingLayoutActivity.LoadType.firstPage -> {
                     loadFirstPageDataCompleteCallback(t)
                 }
-                LoadType.olderPage -> {
+                BaseLoadingLayoutActivity.LoadType.olderPage -> {
                     loadOlderPageDataCompleteCallback(t)
                 }
             }
-            loadCompleteCallback(mLoadType!!, t)
         }
 
-    }
-
-    inner class BaseThrowableConsumer : Consumer<Throwable> {
-        var mLoadType: LoadType? = null
-
-        constructor(loadType: LoadType) {
-            mLoadType = loadType
+        override fun onError(e: Throwable) {
+            loadErrorCallback(mLoadType!!, e)
         }
 
-        override fun accept(t: Throwable?) {
-            loadErrorCallback(mLoadType!!, t)
-        }
     }
 
 }

@@ -26,7 +26,7 @@ abstract class AdvancedSrlTimelineFragment<T, V> : BaseSrlTimelineFragment<T>() 
     override fun loadCompleteCallback(loadType: BaseLoadingLayoutActivity.LoadType, dataList: Any?) {
         getLoadingLayout().showContent()
         when (loadType) {
-            BaseLoadingLayoutActivity.LoadType.firstPage -> {
+            BaseLoadingLayoutActivity.LoadType.olderPage -> {
                 var list: ArrayList<V> = getDataList(dataList as T)
                 if (list == null || list.size < getPageSize()) {
                     getLoadMoreView().loadMoreFinish(false, false)
@@ -34,7 +34,7 @@ abstract class AdvancedSrlTimelineFragment<T, V> : BaseSrlTimelineFragment<T>() 
                     getLoadMoreView().loadMoreFinish(false, true)
                 }
             }
-            BaseLoadingLayoutActivity.LoadType.olderPage -> {
+            BaseLoadingLayoutActivity.LoadType.firstPage -> {
                 getSrlView().isRefreshing = false
                 getLoadMoreView().loadMoreFinish(false, true)
             }

@@ -22,7 +22,7 @@ abstract class AdvancedSrlIndexPageActivity<T, V> : BaseSrlIndexPageActivity<T>(
     override fun loadCompleteCallback(loadType: LoadType, dataList: Any?) {
         getLoadingLayout().showContent()
         when (loadType) {
-            LoadType.firstPage -> {
+            LoadType.olderPage -> {
                 var list: ArrayList<V> = getDataList(dataList as T)
                 if (list == null || list.size < getPageSize()) {
                     getLoadMoreView().loadMoreFinish(false, false)
@@ -30,7 +30,7 @@ abstract class AdvancedSrlIndexPageActivity<T, V> : BaseSrlIndexPageActivity<T>(
                     getLoadMoreView().loadMoreFinish(false, true)
                 }
             }
-            LoadType.olderPage -> {
+            LoadType.firstPage -> {
                 getSrlView().isRefreshing = false
                 getLoadMoreView().loadMoreFinish(false, true)
             }

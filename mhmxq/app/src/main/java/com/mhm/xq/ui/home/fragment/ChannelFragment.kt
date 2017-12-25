@@ -1,5 +1,6 @@
 package com.mhm.xq.ui.home.fragment
 
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.mhm.xq.R
 import com.mhm.xq.constacts.Extras
@@ -14,6 +15,7 @@ class ChannelFragment : AdvancedSrlIndexPageFragment<ArrayList<New>, New>() {
     override fun initRcv() {
         adapter = NewsColumnAdapter()
         findViewById(R.id.titleBar)!!.visibility = View.GONE
+        getRvView().layoutManager = LinearLayoutManager(this.context)
         getRvView().adapter = adapter
     }
 

@@ -3,9 +3,9 @@ package com.mhm.xq.ui.base.fragment
 import com.mhm.xq.ui.base.activity.BaseLoadingLayoutActivity
 import com.trello.rxlifecycle2.android.FragmentEvent
 import io.reactivex.Observable
+import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 
 abstract class BaseTimelineFragment<T> : LazyFragment() {
@@ -31,21 +31,19 @@ abstract class BaseTimelineFragment<T> : LazyFragment() {
     }
 
     fun loadFirstPageData(isNeedLocal: Boolean) {
-        mDisposableFirstPageTimeline = getFirstPageObservable(isNeedLocal)
+        getFirstPageObservable(isNeedLocal)
                 .compose(bindUntilEvent(FragmentEvent.DETACH))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(BaseConsumer(BaseLoadingLayoutActivity.LoadType.firstPage),
-                        BaseThrowableConsumer(BaseLoadingLayoutActivity.LoadType.firstPage))
+                .subscribe(BaseObserver(BaseLoadingLayoutActivity.LoadType.firstPage))
     }
 
     fun loadOlderPagerData() {
-        mDisposableOlderPageTimeline = getTimelineObservable(BaseLoadingLayoutActivity.LoadType.olderPage)
+        getTimelineObservable(BaseLoadingLayoutActivity.LoadType.olderPage)
                 .compose(bindUntilEvent(FragmentEvent.DETACH))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(BaseConsumer(BaseLoadingLayoutActivity.LoadType.olderPage),
-                        BaseThrowableConsumer(BaseLoadingLayoutActivity.LoadType.olderPage))
+                .subscribe(BaseObserver(BaseLoadingLayoutActivity.LoadType.olderPage))
     }
 
     protected fun isLoadingData(): Boolean {
@@ -82,14 +80,29 @@ abstract class BaseTimelineFragment<T> : LazyFragment() {
 
     abstract fun getOldestCt(): Long
 
-    inner class BaseConsumer<T> : Consumer<T> {
-        var mLoadType: BaseLoadingLayoutActivity.LoadType? = null
+    inner class BaseObserver : Observer<T> {
 
-        constructor(loadType: BaseLoadingLayoutActivity.LoadType) {
+        var mLoadType: BaseLoadingLayoutActivity.LoadType? = null
+        var mLastResult: T? = null
+
+        constructor(loadType: BaseLoadingLayoutActivity.LoadType?) {
             mLoadType = loadType
         }
 
-        override fun accept(t: T) {
+        override fun onSubscribe(d: Disposable) {
+            if (mLoadType == BaseLoadingLayoutActivity.LoadType.firstPage) {
+                mDisposableFirstPageTimeline = d
+            } else {
+                mDisposableOlderPageTimeline = d
+            }
+        }
+
+        override fun onComplete() {
+            loadCompleteCallback(mLoadType!!, mLastResult)
+        }
+
+        override fun onNext(t: T) {
+            mLastResult = t
             when (mLoadType) {
                 BaseLoadingLayoutActivity.LoadType.firstPage -> {
                     loadFirstPageDataCompleteCallback(t)
@@ -98,20 +111,11 @@ abstract class BaseTimelineFragment<T> : LazyFragment() {
                     loadOlderPageDataCompleteCallback(t)
                 }
             }
-            loadCompleteCallback(mLoadType!!, t)
         }
 
-    }
-
-    inner class BaseThrowableConsumer : Consumer<Throwable> {
-        var mLoadType: BaseLoadingLayoutActivity.LoadType? = null
-
-        constructor(loadType: BaseLoadingLayoutActivity.LoadType) {
-            mLoadType = loadType
+        override fun onError(e: Throwable) {
+            loadErrorCallback(mLoadType!!, e)
         }
 
-        override fun accept(t: Throwable?) {
-            loadErrorCallback(mLoadType!!, t)
-        }
     }
 }
