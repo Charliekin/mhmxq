@@ -11,6 +11,7 @@
     <dimen name="my_arrow_width">10dp</dimen>
     <dimen name="my_arrow_height">18dp</dimen>
     <dimen name="me_name_icon_margin">@dimen/indicator_margin</dimen>
+    <dimen name="news_tab_margin">@dimen/my_arrow_width</dimen>
 
     <!--  editor-fold  -->
 

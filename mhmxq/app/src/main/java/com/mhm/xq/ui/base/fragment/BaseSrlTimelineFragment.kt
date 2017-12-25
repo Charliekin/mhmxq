@@ -36,8 +36,8 @@ abstract class BaseSrlTimelineFragment<T> : BaseTimelineFragment<T>() {
         return mRvView!!
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onFragmentCreateView(savedInstanceState: Bundle?) {
+        super.onFragmentCreateView(savedInstanceState)
         setContentView(getLayoutId())
         initTimeline()
     }

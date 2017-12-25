@@ -9,8 +9,8 @@ import com.mhm.xq.widget.rcvheader.RecyclerViewWithHeaderAndFooter
 abstract class AdvancedSrlTimelineFragment<T, V> : BaseSrlTimelineFragment<T>() {
     var adapter: BaseRcvAdapter<V>? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onFragmentCreateView(savedInstanceState: Bundle?) {
+        super.onFragmentCreateView(savedInstanceState)
         adapter = if (getRvView() is RecyclerViewWithHeaderAndFooter) {
             (getRvView() as RecyclerViewWithHeaderAndFooter).getInnerAdapter() as BaseRcvAdapter<V>
         } else {

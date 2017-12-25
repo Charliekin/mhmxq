@@ -59,7 +59,7 @@ class LoadMoreDefaultFooterView : RelativeLayout, LoadMoreUIHandler {
         mTextView!!.setText(R.string.common_load_more_click_to_load_more)
     }
 
-    override fun onLoadError(container: LoadMoreContainer, errorCode: Int, errorMessage: String) {
+    override fun onLoadError(container: LoadMoreContainer, errorCode: Int, errorMessage: String?) {
         setVisibility(View.VISIBLE)
         mTextView!!.setText(R.string.common_load_more_error)
     }

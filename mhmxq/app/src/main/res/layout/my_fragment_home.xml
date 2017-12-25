@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryBg">
 
-    <TextView
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tlNews"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/home_tab_page"/>
+        android:layout_height="40dp"
+        app:tabMode="scrollable"
+        android:fillViewport="false"
+        app:tabIndicatorHeight="0dp"
+        app:tabPadding="0dp"
+        app:tabPaddingTop="0dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        app:tabPaddingStart="0dp"
+        app:tabPaddingEnd="0dp"
+        app:tabPaddingBottom="0dp"
+        android:background="@color/white"/>
+
+    <View
+        android:id="@+id/vNews"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorPrimaryBg"
+        app:layout_constraintTop_toBottomOf="@id/tlNews"
+        app:layout_constraintBottom_toTopOf="@id/vpNews"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpNews"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vNews"/>
 
 </android.support.constraint.ConstraintLayout>

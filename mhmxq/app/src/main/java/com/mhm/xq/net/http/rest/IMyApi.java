@@ -1,5 +1,7 @@
 package com.mhm.xq.net.http.rest;
 
+import com.mhm.xq.entity.News;
+import com.mhm.xq.entity.NewsColumns;
 import com.mhm.xq.entity.User;
 import com.mhm.xq.entity.base.BaseEntity;
 
@@ -43,8 +45,13 @@ public interface IMyApi {
 
     //<!--  editor-fold  desc="HomeFragment"  -->
 
-    @GET("/channel")
-    Observable<BaseEntity> getChannel();
+    @GET("/newsColumn")
+    Observable<NewsColumns> getNewsColumn();
+
+
+    @FormUrlEncoded
+    @POST("/news")
+    Observable<News> getNews(@Field("newsColumnId") String newsColumnId);
 
     //<!--  editor-fold  -->
 }

@@ -1,9 +1,16 @@
 package com.mhm.xq.net.http.rest;
 
+import com.mhm.xq.entity.New;
+import com.mhm.xq.entity.News;
+import com.mhm.xq.entity.NewsColumns;
 import com.mhm.xq.entity.User;
 import com.mhm.xq.entity.base.BaseEntity;
 
+import java.util.ArrayList;
+
 import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.functions.Function;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 
@@ -33,7 +40,17 @@ public class MyApi {
 
     //<!--  editor-fold  -->
 
-    public static Observable<BaseEntity> getChannel() {
-        return MyRetrofit.getInstance().getApi().getChannel();
+    public static Observable<NewsColumns> getNewsColumn() {
+        return MyRetrofit.getInstance().getApi().getNewsColumn();
+    }
+
+    public static Observable<ArrayList<New>> getNews(String newsColumnId) {
+        return MyRetrofit.getInstance().getApi().getNews(newsColumnId)
+                .flatMap(new Function<News, ObservableSource<ArrayList<New>>>() {
+                    @Override
+                    public ObservableSource<ArrayList<New>> apply(News news) throws Exception {
+                        return Observable.just(news.getNews());
+                    }
+                });
     }
 }

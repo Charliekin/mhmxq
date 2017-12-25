@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.occall.huarentong.ui.base.widget.rvheader.RecyclerViewWithHeaderAndFooter
+                <com.mhm.xq.widget.rcvheader.RecyclerViewWithHeaderAndFooter
                     android:id="@id/rvView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>

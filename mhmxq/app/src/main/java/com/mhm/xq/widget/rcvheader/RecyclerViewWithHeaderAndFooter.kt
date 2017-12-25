@@ -12,8 +12,8 @@ class RecyclerViewWithHeaderAndFooter : RecyclerView {
         return mWrapAdapter
     }
 
-    fun getInnerAdapter(): RecyclerView.Adapter<*> {
-        return mWrapAdapter!!.getInnerAdapter()!!
+    fun getInnerAdapter(): RecyclerView.Adapter<RecyclerView.ViewHolder>? {
+        return mWrapAdapter!!.getInnerAdapter()
     }
 
     constructor(context: Context) : this(context, null) {
@@ -84,7 +84,6 @@ class RecyclerViewWithHeaderAndFooter : RecyclerView {
     fun clearAllFooterView() {
         mWrapAdapter!!.clearAllFooterView()
     }
-
 
     override fun setAdapter(adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>) {
         mWrapAdapter!!.setInnerAdapter(adapter)

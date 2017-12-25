@@ -36,8 +36,8 @@ abstract class BaseSrlIndexPageFragment<T> : BaseIndexPageFragment<T>() {
         return mRvView!!
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onFragmentCreateView(savedInstanceState: Bundle?) {
+        super.onFragmentCreateView(savedInstanceState)
         setContentView(R.layout.common_activity_base_srl)
         initIndexPage()
     }
