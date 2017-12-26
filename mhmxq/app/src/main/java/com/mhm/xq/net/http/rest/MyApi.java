@@ -44,8 +44,8 @@ public class MyApi {
         return MyRetrofit.getInstance().getApi().getNewsColumn();
     }
 
-    public static Observable<ArrayList<New>> getNews(String newsColumnId) {
-        return MyRetrofit.getInstance().getApi().getNews(newsColumnId)
+    public static Observable<ArrayList<New>> getNews(String newsColumnId, int pageIndex, int pageSize) {
+        return MyRetrofit.getInstance().getApi().getNews(newsColumnId, pageIndex, pageSize)
                 .flatMap(new Function<News, ObservableSource<ArrayList<New>>>() {
                     @Override
                     public ObservableSource<ArrayList<New>> apply(News news) throws Exception {

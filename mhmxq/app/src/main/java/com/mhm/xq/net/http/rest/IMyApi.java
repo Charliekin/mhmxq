@@ -51,7 +51,9 @@ public interface IMyApi {
 
     @FormUrlEncoded
     @POST("/news")
-    Observable<News> getNews(@Field("newsColumnId") String newsColumnId);
+    Observable<News> getNews(@Field("newsColumnId") String newsColumnId,
+                             @Field("pageIndex") int pageIndex,
+                             @Field("pageSize") int pageSize);
 
     //<!--  editor-fold  -->
 }

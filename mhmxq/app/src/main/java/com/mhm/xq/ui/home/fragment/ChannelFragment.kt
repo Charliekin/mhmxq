@@ -20,7 +20,7 @@ class ChannelFragment : AdvancedSrlIndexPageFragment<ArrayList<New>, New>() {
     }
 
     override fun getNetPageDataListObservable(pageIndex: Int, pageSize: Int): Observable<ArrayList<New>> {
-        return MyApi.getNews(getNewsColumnId())
+        return MyApi.getNews(getNewsColumnId(), pageIndex, pageSize)
     }
 
     override fun getLocalFirstPageDataListObservable(): Observable<ArrayList<New>> {
