@@ -9,7 +9,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
 import com.mhm.xq.R
-import com.mhm.xq.entity.User
+import com.mhm.xq.entity.greendao.User
 import com.mhm.xq.ui.base.activity.BaseActivity
 import com.mhm.xq.utils.StringUtil
 import com.mhm.xq.utils.ToastUtil

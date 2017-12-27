@@ -40,7 +40,7 @@ class ConfigManager {
         if (sConfig == null) {
             sConfig = mConfigDao!!.loadSingle()
         }
-        return sConfig as Config
+        return sConfig!!
     }
 
     fun saveSingle(config: Config): Config {
@@ -49,9 +49,7 @@ class ConfigManager {
         return config
     }
 
-    fun isFirstRun(): Boolean {
-        return loadSingle().isFirstRun()
-    }
+    fun isFirstRun(): Boolean = loadSingle().isFirstRun()
 
     fun updateVersionCode() {
         var newVersionCode: Int = AppUtil.getAppVersionCode(MyApp.getContext()!!)
@@ -60,8 +58,10 @@ class ConfigManager {
         saveSingle(confit)
     }
 
-    fun checkIsAuthLogin(): Boolean {
-        return loadSingle().getIsAutoLogin()
-    }
+    fun checkIsAuthLogin(): Boolean = loadSingle().getIsAutoLogin()
+
+    fun getCurrentLoginId(): String = loadSingle().getCurrentLoginId()!!
+
+    fun getCurrentLoginIdAsInteger(): Long = loadSingle().getCurrentLoginId()!!.toLong()
 
 }

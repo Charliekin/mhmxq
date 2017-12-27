@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.mhm.xq.R
-import com.mhm.xq.entity.User
+import com.mhm.xq.entity.greendao.User
 import com.mhm.xq.net.http.rest.MyApi
 import com.mhm.xq.ui.auth.base.activity.BaseAuthActivity
 import com.mhm.xq.utils.ToastUtil

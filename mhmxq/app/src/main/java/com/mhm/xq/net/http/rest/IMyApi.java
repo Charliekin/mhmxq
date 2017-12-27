@@ -2,8 +2,8 @@ package com.mhm.xq.net.http.rest;
 
 import com.mhm.xq.entity.News;
 import com.mhm.xq.entity.NewsColumns;
-import com.mhm.xq.entity.User;
 import com.mhm.xq.entity.base.BaseEntity;
+import com.mhm.xq.entity.greendao.User;
 
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
