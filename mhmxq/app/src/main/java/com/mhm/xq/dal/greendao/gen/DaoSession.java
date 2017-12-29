@@ -1,5 +1,6 @@
 package com.mhm.xq.dal.greendao.gen;
 
+import com.mhm.xq.entity.greendao.NewsColumn;
 import com.mhm.xq.entity.greendao.User;
 
 import org.greenrobot.greendao.AbstractDao;
@@ -14,29 +15,41 @@ import java.util.Map;
 
 /**
  * {@inheritDoc}
- *
+ * 
  * @see org.greenrobot.greendao.AbstractDaoSession
  */
 public class DaoSession extends AbstractDaoSession {
 
+    private final DaoConfig newsColumnDaoConfig;
     private final DaoConfig userDaoConfig;
 
+    private final NewsColumnDao newsColumnDao;
     private final UserDao userDao;
 
     public DaoSession(Database db, IdentityScopeType type, Map<Class<? extends AbstractDao<?, ?>>, DaoConfig>
             daoConfigMap) {
         super(db);
 
+        newsColumnDaoConfig = daoConfigMap.get(NewsColumnDao.class).clone();
+        newsColumnDaoConfig.initIdentityScope(type);
+
         userDaoConfig = daoConfigMap.get(UserDao.class).clone();
         userDaoConfig.initIdentityScope(type);
 
+        newsColumnDao = new NewsColumnDao(newsColumnDaoConfig, this);
         userDao = new UserDao(userDaoConfig, this);
 
+        registerDao(NewsColumn.class, newsColumnDao);
         registerDao(User.class, userDao);
     }
 
     public void clear() {
+        newsColumnDaoConfig.clearIdentityScope();
         userDaoConfig.clearIdentityScope();
+    }
+
+    public NewsColumnDao getNewsColumnDao() {
+        return newsColumnDao;
     }
 
     public UserDao getUserDao() {

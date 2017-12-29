@@ -2,6 +2,7 @@ package com.mhm.xq
 
 import android.app.Application
 import android.content.Context
+import com.facebook.stetho.Stetho
 import com.mhm.xq.bll.ConfigManager
 import com.mhm.xq.dal.Db
 import com.mhm.xq.utils.AppUtil
@@ -17,6 +18,7 @@ class MyApp : Application() {
         if (processName != null && processName == packageName) {
             PreferencesUtil.init(applicationContext)
         }
+        Stetho.initializeWithDefaults(this)
         initStorage()
     }
 

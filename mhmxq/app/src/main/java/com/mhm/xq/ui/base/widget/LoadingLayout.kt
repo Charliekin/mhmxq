@@ -12,10 +12,13 @@ import com.mhm.xq.R
 
 class LoadingLayout : FrameLayout {
 
-    val EMPTY_VIEW = 0
-    val ERROR_VIEW = 1
-    val LOADING_VIEW = 2
-    val CONTENT_VIEW = 3
+
+    companion object {
+        val EMPTY_VIEW = 0
+        val ERROR_VIEW = 1
+        val LOADING_VIEW = 2
+        val CONTENT_VIEW = 3
+    }
 
 
     private var mOnRetryClickListener: View.OnClickListener? = null

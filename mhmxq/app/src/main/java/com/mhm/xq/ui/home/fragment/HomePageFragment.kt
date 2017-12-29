@@ -6,17 +6,16 @@ import android.support.v4.view.ViewPager
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.mhm.xq.R
-import com.mhm.xq.entity.NewsColumn
+import com.mhm.xq.dal.Db
+import com.mhm.xq.entity.greendao.NewsColumn
 import com.mhm.xq.net.http.rest.MyApi
-import com.mhm.xq.ui.base.fragment.LazyFragment
+import com.mhm.xq.ui.base.fragment.BaseRetryLoadNetDataFragment
 import com.mhm.xq.ui.home.adapter.NewsAdapter
 import com.mhm.xq.ui.home.view.NewsTabLayout
-import com.mhm.xq.utils.ToastUtil
-import com.trello.rxlifecycle2.android.FragmentEvent
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import com.mhm.xq.utils.LogUtil
+import io.reactivex.Observable
 
-class HomePageFragment : LazyFragment() {
+class HomePageFragment : BaseRetryLoadNetDataFragment<ArrayList<NewsColumn>>() {
 
     @BindView(R.id.tlNews)
     @JvmField
@@ -27,14 +26,12 @@ class HomePageFragment : LazyFragment() {
 
     private var mAdapter: NewsAdapter? = null
     private var mNewsTabLayout: NewsTabLayout? = null
-
     var sColumns: ArrayList<NewsColumn>? = null
 
     override fun onFragmentCreateView(savedInstanceState: Bundle?) {
         super.onFragmentCreateView(savedInstanceState)
         setFragmentContentView(R.layout.my_fragment_home)
         ButterKnife.bind(this, rootView!!)
-        init()
     }
 
     override fun onFragmentResume(type: Int) {
@@ -44,10 +41,6 @@ class HomePageFragment : LazyFragment() {
 
     override fun onLazyLoadingData() {
         super.onLazyLoadingData()
-        loadNetNewsColumn()
-    }
-
-    private fun init() {
         initVariables()
     }
 
@@ -59,29 +52,22 @@ class HomePageFragment : LazyFragment() {
         mNewsTabLayout = NewsTabLayout(this.context!!, mTlNews!!)
     }
 
-    private fun loadNetNewsColumn() {
-        MyApi.getNewsColumn().compose(bindUntilEvent(FragmentEvent.DETACH))
-                .subscribeOn(Schedulers.io())
-                .doOnSubscribe({ startProgressBar() })
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ base ->
-                    closeProgressBar()
-                    sColumns!!.addAll(base.getNewsColumns())
-                    dataProcessing()
-                    getLoadingLayout().showContent()
-                }, {
-                    closeProgressBar()
-                    getLoadingLayout().showContent()
-                    ToastUtil.show(this.context!!, R.string.common_error)
-                })
-    }
+    override fun getLocalData(): ArrayList<NewsColumn>? =
+            Db.getManagerSession().newsColumnManager!!.getDao().loadAll() as ArrayList<NewsColumn>
 
-    private fun dataProcessing() {
+    override fun getNetDataObservable(): Observable<ArrayList<NewsColumn>> = MyApi.getNewsColumn()
+
+    override fun refreshUI(data: ArrayList<NewsColumn>) {
+        sColumns!!.clear()
+        sColumns!!.addAll(data)
         var list = ArrayList<String>()
-        sColumns!!.mapTo(list) { it.getName() }
+        data.mapTo(list) { it.name }
         mAdapter!!.count = list.size
         mNewsTabLayout!!.setTabData(list)
+    }
+
+    override fun handlerError(throwable: Throwable, isImportant: Boolean) {
+        LogUtil.i(throwable.message)
     }
 
     override fun onDetach() {

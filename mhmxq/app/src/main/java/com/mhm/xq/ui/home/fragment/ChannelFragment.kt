@@ -32,7 +32,8 @@ class ChannelFragment : AdvancedSrlIndexPageFragment<ArrayList<New>, New>() {
         if (fragment != null) {
             var columns = fragment.sColumns
             if (columns!!.isNotEmpty()) {
-                return columns[arguments!!.getInt(Extras.TAB_INDEX)].getId()
+                return StringBuilder().append(
+                        columns[arguments!!.getInt(Extras.TAB_INDEX)].id).toString()
             }
         }
         return ""

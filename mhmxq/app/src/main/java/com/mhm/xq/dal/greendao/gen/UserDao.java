@@ -49,7 +49,7 @@ public class UserDao extends AbstractDao<User, Long> {
      * Creates the underlying database table.
      */
     public static void createTable(Database db, boolean ifNotExists) {
-        String constraint = ifNotExists ? "IF NOT EXISTS " : "";
+        String constraint = ifNotExists ? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"USER\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"NAME\" TEXT," + // 1: name
@@ -62,9 +62,7 @@ public class UserDao extends AbstractDao<User, Long> {
                 "\"CT\" INTEGER NOT NULL );"); // 8: ct
     }
 
-    /**
-     * Drops the underlying database table.
-     */
+    /** Drops the underlying database table. */
     public static void dropTable(Database db, boolean ifExists) {
         String sql = "DROP TABLE " + (ifExists ? "IF EXISTS " : "") + "\"USER\"";
         db.execSQL(sql);
@@ -73,32 +71,32 @@ public class UserDao extends AbstractDao<User, Long> {
     @Override
     protected final void bindValues(DatabaseStatement stmt, User entity) {
         stmt.clearBindings();
-
+ 
         Long id = entity.getId();
         if (id != null) {
             stmt.bindLong(1, id);
         }
-
+ 
         String name = entity.getName();
         if (name != null) {
             stmt.bindString(2, name);
         }
-
+ 
         String mobile = entity.getMobile();
         if (mobile != null) {
             stmt.bindString(3, mobile);
         }
-
+ 
         String email = entity.getEmail();
         if (email != null) {
             stmt.bindString(4, email);
         }
-
+ 
         String nick_name = entity.getNick_name();
         if (nick_name != null) {
             stmt.bindString(5, nick_name);
         }
-
+ 
         String icon = entity.getIcon();
         if (icon != null) {
             stmt.bindString(6, icon);
@@ -111,32 +109,32 @@ public class UserDao extends AbstractDao<User, Long> {
     @Override
     protected final void bindValues(SQLiteStatement stmt, User entity) {
         stmt.clearBindings();
-
+ 
         Long id = entity.getId();
         if (id != null) {
             stmt.bindLong(1, id);
         }
-
+ 
         String name = entity.getName();
         if (name != null) {
             stmt.bindString(2, name);
         }
-
+ 
         String mobile = entity.getMobile();
         if (mobile != null) {
             stmt.bindString(3, mobile);
         }
-
+ 
         String email = entity.getEmail();
         if (email != null) {
             stmt.bindString(4, email);
         }
-
+ 
         String nick_name = entity.getNick_name();
         if (nick_name != null) {
             stmt.bindString(5, nick_name);
         }
-
+ 
         String icon = entity.getIcon();
         if (icon != null) {
             stmt.bindString(6, icon);
@@ -149,7 +147,7 @@ public class UserDao extends AbstractDao<User, Long> {
     @Override
     public Long readKey(Cursor cursor, int offset) {
         return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
-    }
+    }    
 
     @Override
     public User readEntity(Cursor cursor, int offset) {
@@ -166,7 +164,7 @@ public class UserDao extends AbstractDao<User, Long> {
         );
         return entity;
     }
-
+     
     @Override
     public void readEntity(Cursor cursor, User entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
@@ -178,14 +176,14 @@ public class UserDao extends AbstractDao<User, Long> {
         entity.setAge(cursor.getInt(offset + 6));
         entity.setGender(cursor.getInt(offset + 7));
         entity.setCt(cursor.getLong(offset + 8));
-    }
-
+     }
+    
     @Override
     protected final Long updateKeyAfterInsert(User entity, long rowId) {
         entity.setId(rowId);
         return rowId;
     }
-
+    
     @Override
     public Long getKey(User entity) {
         if (entity != null) {
@@ -204,5 +202,5 @@ public class UserDao extends AbstractDao<User, Long> {
     protected final boolean isEntityUpdateable() {
         return true;
     }
-
+    
 }
