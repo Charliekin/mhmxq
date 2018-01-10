@@ -3,8 +3,9 @@ package com.mhm.xq.ui.home.fragment
 import android.os.Bundle
 import com.mhm.xq.R
 import com.mhm.xq.ui.base.fragment.BaseFragment
+import com.mhm.xq.ui.base.fragment.LazyFragment
 
-class BabyFragment : BaseFragment() {
+class BabyFragment : LazyFragment() {
 
 
     override fun onCreateView(savedInstanceState: Bundle?) {
