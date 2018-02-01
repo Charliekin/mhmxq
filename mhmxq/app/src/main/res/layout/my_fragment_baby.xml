@@ -5,9 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryBg">
 
-    <TextView
+    <com.mhm.xq.view.TimeBrokenlineView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/home_tab_disaster"/>
+        android:layout_height="wrap_content"/>
 </android.support.constraint.ConstraintLayout>

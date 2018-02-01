@@ -10,6 +10,7 @@
     <color name="textColorPrimary">#212B3E</color>
     <color name="textColorSecondary">#656A74</color>
     <color name="textColorPrice">#FF6600</color>
+    <color name="timeBrokenlineBg">#0fFF6600</color>
 
     <color name="commonTextColor">#808080</color>
     <color name="colorPrimaryBg">#EBEBEB</color>
